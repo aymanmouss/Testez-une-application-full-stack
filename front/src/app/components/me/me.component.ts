@@ -24,6 +24,7 @@ export class MeComponent implements OnInit {
     this.userService
       .getById(this.sessionService.sessionInformation!.id.toString())
       .subscribe((user: User) => (this.user = user));
+    console.log(this.user);
   }
 
   public back(): void {
