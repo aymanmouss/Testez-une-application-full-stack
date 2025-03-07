@@ -42,6 +42,11 @@ public class SessionController {
         }
     }
 
+//    mvc.perform(post("/api/session")
+//                        .contentType(MediaType.APPLICATION_JSON)
+//                        .content(sessionJacksonTester.write(session).getJson()))
+//            .andExpect(status().isUnauthorized()).andReturn();
+
     @GetMapping()
     public ResponseEntity<?> findAll() {
         List<Session> sessions = this.sessionService.findAll();
