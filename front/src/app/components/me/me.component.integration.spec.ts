@@ -1,0 +1,53 @@
+import {
+  HttpClientTestingModule,
+  HttpTestingController,
+} from '@angular/common/http/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { SessionService } from 'src/app/services/session.service';
+import { UserService } from 'src/app/services/user.service';
+import { MeComponent } from './me.component';
+import { describe, expect, it, beforeEach } from '@jest/globals';
+
+describe('MeComponent Integration', () => {
+  let component: MeComponent;
+  let fixture: ComponentFixture<MeComponent>;
+  let httpMock: HttpTestingController;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [MeComponent],
+      imports: [HttpClientTestingModule, MatSnackBarModule],
+      providers: [
+        UserService,
+        {
+          provide: SessionService,
+          useValue: { sessionInformation: { id: 1 }, logOut: jest.fn() },
+        },
+        { provide: Router, useValue: { navigate: jest.fn() } },
+      ],
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(MeComponent);
+    component = fixture.componentInstance;
+    httpMock = TestBed.inject(HttpTestingController);
+  });
+
+  it('should load user via HTTP', () => {
+    fixture.detectChanges();
+
+    const req = httpMock.expectOne('api/user/1');
+    req.flush({ id: 1, email: 'test@test.com' });
+
+    expect(component.user).toEqual({ id: 1, email: 'test@test.com' });
+  });
+
+  it('should delete user via HTTP', () => {
+    component.delete();
+
+    const req = httpMock.expectOne('api/user/1');
+    expect(req.request.method).toEqual('DELETE');
+    req.flush({});
+  });
+});
