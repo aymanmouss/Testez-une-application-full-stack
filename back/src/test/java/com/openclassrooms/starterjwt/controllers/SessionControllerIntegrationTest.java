@@ -73,10 +73,6 @@ class SessionControllerIntegrationTest {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk());
-//                .andExpect(jsonPath("$.id").value(1))
-//                .andExpect(jsonPath("$.name").value("Yoga Session"))
-//                .andExpect(jsonPath("$.description").value("A yoga session for beginners"))
-//                .andExpect(jsonPath("$.teacher_id").value(1));
     }
 
     @Test

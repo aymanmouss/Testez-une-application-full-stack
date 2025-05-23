@@ -88,23 +88,6 @@ public class AuthControllerIntegrationTest {
                 .andExpect(status().isOk());
     }
 
-//    @Test
-//    void login_InvalidCredentials_ReturnsUnauthorized() throws Exception {
-//        // Arrange
-//        LoginRequest loginRequest = new LoginRequest();
-//        loginRequest.setEmail("test@example.com");
-//        loginRequest.setPassword("wrongpassword");
-//
-//        // Mock authentication manager to throw an exception
-//        when(authenticationManager.authenticate(any()))
-//                .thenThrow(new org.springframework.security.authentication.BadCredentialsException("Bad credentials"));
-//
-//        // Act & Assert
-//        mockMvc.perform(post("/api/auth/login")
-//                        .contentType(MediaType.APPLICATION_JSON)
-//                        .content(objectMapper.writeValueAsString(loginRequest)))
-//                .andExpect(status().isUnauthorized());
-//    }
 
     @Test
     void register_NewUser_ReturnsSuccess() throws Exception {

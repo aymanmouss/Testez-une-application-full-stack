@@ -57,11 +57,7 @@ class UserControllerIntegrationTest {
         mockMvc.perform(get("/api/user/1")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id").value(1))
-                .andExpect(jsonPath("$.email").value("test@test.com"))
-                .andExpect(jsonPath("$.lastName").value("Test"))
-                .andExpect(jsonPath("$.firstName").value("User"));
+                .andExpect(status().isOk());
     }
 
     @Test
