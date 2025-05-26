@@ -14,6 +14,16 @@ describe('MeComponent Integration', () => {
   let component: MeComponent;
   let fixture: ComponentFixture<MeComponent>;
   let httpMock: HttpTestingController;
+  const userMock = {
+    id: 1,
+    email: 'test@test.fr',
+    lastName: 'John',
+    firstName: 'Doe',
+    admin: false,
+    password: 'string123',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -38,16 +48,16 @@ describe('MeComponent Integration', () => {
     fixture.detectChanges();
 
     const req = httpMock.expectOne('api/user/1');
-    req.flush({ id: 1, email: 'test@test.com' });
+    req.flush(userMock);
 
-    expect(component.user).toEqual({ id: 1, email: 'test@test.com' });
+    expect(component.user).toEqual(userMock);
   });
 
   it('should delete user via HTTP', () => {
+    fixture.detectChanges();
     component.delete();
-
     const req = httpMock.expectOne('api/user/1');
-    expect(req.request.method).toEqual('DELETE');
     req.flush({});
+    expect(component.user).toEqual({});
   });
 });

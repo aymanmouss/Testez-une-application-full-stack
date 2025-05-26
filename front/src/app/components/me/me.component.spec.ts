@@ -22,7 +22,7 @@ describe('MeComponent', () => {
 
   const mockSessionService = {
     sessionInformation: {
-      admin: true,
+      admin: false,
       id: 1,
     },
     logOut: jest.fn(),
@@ -33,7 +33,7 @@ describe('MeComponent', () => {
     email: 'test@test.fr',
     lastName: 'John',
     firstName: 'Doe',
-    admin: true,
+    admin: false,
     password: 'string123',
     createdAt: new Date(),
     updatedAt: new Date(),

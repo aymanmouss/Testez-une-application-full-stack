@@ -1,6 +1,6 @@
 {
-  "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/polyfills.ts": {
-    "path": "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/polyfills.ts",
+  "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/polyfills.ts": {
+    "path": "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/polyfills.ts",
     "statementMap": {},
     "fnMap": {},
     "branchMap": {},
@@ -13,17 +13,17 @@
       "names": [],
       "sourceRoot": "",
       "sources": [
-        "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/polyfills.ts"
+        "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/polyfills.ts"
       ],
       "sourcesContent": [
         "/**\n * This file includes polyfills needed by Angular and is loaded before the app.\n * You can add your own extra polyfills to this file.\n *\n * This file is divided into 2 sections:\n *   1. Browser polyfills. These are applied before loading ZoneJS and are sorted by browsers.\n *   2. Application imports. Files imported after ZoneJS that should be loaded before your main\n *      file.\n *\n * The current setup is for so-called \"evergreen\" browsers; the last versions of browsers that\n * automatically update themselves. This includes recent versions of Safari, Chrome (including\n * Opera), Edge on the desktop, and iOS and Chrome on mobile.\n *\n * Learn more in https://angular.io/guide/browser-support\n */\n\n/***************************************************************************************************\n * BROWSER POLYFILLS\n */\n\n/**\n * By default, zone.js will patch all possible macroTask and DomEvents\n * user can disable parts of macroTask/DomEvents patch by setting following flags\n * because those flags need to be set before `zone.js` being loaded, and webpack\n * will put import in the top of bundle, so user need to create a separate file\n * in this directory (for example: zone-flags.ts), and put the following flags\n * into that file, and then add the following code before importing zone.js.\n * import './zone-flags';\n *\n * The flags allowed in zone-flags.ts are listed here.\n *\n * The following flags will work for all browsers.\n *\n * (window as any).__Zone_disable_requestAnimationFrame = true; // disable patch requestAnimationFrame\n * (window as any).__Zone_disable_on_property = true; // disable patch onProperty such as onclick\n * (window as any).__zone_symbol__UNPATCHED_EVENTS = ['scroll', 'mousemove']; // disable patch specified eventNames\n *\n *  in IE/Edge developer tools, the addEventListener will also be wrapped by zone.js\n *  with the following flag, it will bypass `zone.js` patch for IE/Edge\n *\n *  (window as any).__Zone_enable_cross_context_check = true;\n *\n */\n\n/***************************************************************************************************\n * Zone JS is required by default for Angular itself.\n */\nimport 'zone.js';  // Included with Angular CLI.\n\n\n/***************************************************************************************************\n * APPLICATION IMPORTS\n */\n"
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "cd035ec23e343a20e8591496ab1651363302ac4d"
+    "hash": "76c27603985ee79885dd21e29bef4b57248fd30b"
   },
-  "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/services/session.service.ts": {
-    "path": "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/services/session.service.ts",
+  "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/services/session.service.ts": {
+    "path": "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/services/session.service.ts",
     "statementMap": {
       "0": {
         "start": {
@@ -385,35 +385,35 @@
       }
     },
     "s": {
-      "0": 4,
-      "1": 4,
-      "2": 4,
-      "3": 297,
-      "4": 4,
-      "5": 4,
-      "6": 4,
+      "0": 21,
+      "1": 21,
+      "2": 21,
+      "3": 1116,
+      "4": 8,
+      "5": 8,
+      "6": 8,
       "7": 0,
       "8": 0,
       "9": 0,
-      "10": 4,
-      "11": 4,
-      "12": 4,
-      "13": 4,
-      "14": 4
+      "10": 8,
+      "11": 21,
+      "12": 21,
+      "13": 21,
+      "14": 21
     },
     "f": {
-      "0": 4,
-      "1": 4,
-      "2": 297,
-      "3": 4,
+      "0": 21,
+      "1": 21,
+      "2": 1116,
+      "3": 8,
       "4": 0,
-      "5": 4,
-      "6": 4
+      "5": 8,
+      "6": 21
     },
     "b": {
       "0": [
-        4,
-        4
+        21,
+        21
       ]
     },
     "inputSourceMap": {
@@ -438,17 +438,17 @@
       ],
       "sourceRoot": "",
       "sources": [
-        "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/services/session.service.ts"
+        "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/services/session.service.ts"
       ],
       "sourcesContent": [
         "import { Injectable } from '@angular/core';\nimport { BehaviorSubject, Observable } from 'rxjs';\nimport { SessionInformation } from '../interfaces/sessionInformation.interface';\n\n@Injectable({\n  providedIn: 'root'\n})\nexport class SessionService {\n\n  public isLogged = false;\n  public sessionInformation: SessionInformation | undefined;\n\n  private isLoggedSubject = new BehaviorSubject<boolean>(this.isLogged);\n\n  public $isLogged(): Observable<boolean> {\n    return this.isLoggedSubject.asObservable();\n  }\n\n  public logIn(user: SessionInformation): void {\n    this.sessionInformation = user;\n    this.isLogged = true;\n    this.next();\n  }\n\n  public logOut(): void {\n    this.sessionInformation = undefined;\n    this.isLogged = false;\n    this.next();\n  }\n\n  private next(): void {\n    this.isLoggedSubject.next(this.isLogged);\n  }\n}\n"
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "32958393d55230ab2547581ce70c753dbc771ebb"
+    "hash": "bf2e70aa534b675933933556d6c939e79faf61bf"
   },
-  "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/services/user.service.ts": {
-    "path": "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/services/user.service.ts",
+  "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/services/user.service.ts": {
+    "path": "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/services/user.service.ts",
     "statementMap": {
       "0": {
         "start": {
@@ -702,27 +702,27 @@
       }
     },
     "s": {
-      "0": 4,
-      "1": 0,
-      "2": 0,
-      "3": 0,
+      "0": 21,
+      "1": 1,
+      "2": 1,
+      "3": 1,
       "4": 0,
-      "5": 4,
-      "6": 0,
-      "7": 4,
-      "8": 4
+      "5": 21,
+      "6": 1,
+      "7": 21,
+      "8": 21
     },
     "f": {
-      "0": 4,
-      "1": 0,
-      "2": 0,
+      "0": 21,
+      "1": 1,
+      "2": 1,
       "3": 0,
-      "4": 0
+      "4": 1
     },
     "b": {
       "0": [
-        0,
-        0
+        1,
+        1
       ]
     },
     "inputSourceMap": {
@@ -743,17 +743,17 @@
       ],
       "sourceRoot": "",
       "sources": [
-        "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/services/user.service.ts"
+        "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/services/user.service.ts"
       ],
       "sourcesContent": [
         "import { HttpClient } from '@angular/common/http';\nimport { Injectable } from '@angular/core';\nimport { Observable } from 'rxjs';\nimport { User } from '../interfaces/user.interface';\n\n@Injectable({\n  providedIn: 'root'\n})\nexport class UserService {\n\n  private pathService = 'api/user';\n\n  constructor(private httpClient: HttpClient) { }\n\n  public getById(id: string): Observable<User> {\n    return this.httpClient.get<User>(`${this.pathService}/${id}`);\n  }\n\n  public delete(id: string): Observable<any> {\n    return this.httpClient.delete(`${this.pathService}/${id}`);\n  }\n}\n"
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "52121c990ee69010186524d1f7d76b1269d8bcce"
+    "hash": "beea2d8a2645b9b346e95032773d57b555e97a29"
   },
-  "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/components/me/me.component.ts": {
-    "path": "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/components/me/me.component.ts",
+  "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/components/me/me.component.ts": {
+    "path": "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/components/me/me.component.ts",
     "statementMap": {
       "0": {
         "start": {
@@ -2243,107 +2243,107 @@
       "1": 0,
       "2": 0,
       "3": 0,
-      "4": 0,
-      "5": 0,
-      "6": 0,
-      "7": 0,
-      "8": 0,
-      "9": 0,
-      "10": 0,
+      "4": 5,
+      "5": 1,
+      "6": 1,
+      "7": 1,
+      "8": 1,
+      "9": 1,
+      "10": 1,
       "11": 0,
       "12": 0,
       "13": 0,
-      "14": 0,
-      "15": 0,
-      "16": 0,
-      "17": 0,
-      "18": 0,
-      "19": 0,
-      "20": 0,
-      "21": 0,
-      "22": 0,
-      "23": 0,
-      "24": 0,
-      "25": 0,
-      "26": 0,
-      "27": 0,
-      "28": 0,
-      "29": 0,
-      "30": 0,
-      "31": 0,
-      "32": 0,
-      "33": 0,
-      "34": 0,
-      "35": 0,
-      "36": 0,
-      "37": 0,
-      "38": 0,
-      "39": 0,
-      "40": 0,
-      "41": 0,
-      "42": 0,
-      "43": 0,
-      "44": 0,
-      "45": 0,
-      "46": 0,
-      "47": 0,
-      "48": 0,
-      "49": 0,
-      "50": 0,
-      "51": 0,
-      "52": 0,
-      "53": 0,
-      "54": 0,
-      "55": 0,
-      "56": 4,
-      "57": 0,
-      "58": 0,
-      "59": 0,
-      "60": 0,
-      "61": 0,
-      "62": 0,
-      "63": 0,
-      "64": 0,
+      "14": 1,
+      "15": 1,
+      "16": 1,
+      "17": 1,
+      "18": 1,
+      "19": 1,
+      "20": 5,
+      "21": 1,
+      "22": 1,
+      "23": 1,
+      "24": 1,
+      "25": 1,
+      "26": 1,
+      "27": 1,
+      "28": 1,
+      "29": 1,
+      "30": 1,
+      "31": 1,
+      "32": 1,
+      "33": 1,
+      "34": 1,
+      "35": 1,
+      "36": 1,
+      "37": 1,
+      "38": 1,
+      "39": 1,
+      "40": 1,
+      "41": 1,
+      "42": 5,
+      "43": 4,
+      "44": 4,
+      "45": 4,
+      "46": 4,
+      "47": 4,
+      "48": 4,
+      "49": 4,
+      "50": 4,
+      "51": 4,
+      "52": 4,
+      "53": 4,
+      "54": 4,
+      "55": 4,
+      "56": 21,
+      "57": 1,
+      "58": 1,
+      "59": 1,
+      "60": 1,
+      "61": 1,
+      "62": 1,
+      "63": 1,
+      "64": 1,
       "65": 0,
       "66": 0,
       "67": 0,
       "68": 0,
-      "69": 4,
-      "70": 0,
-      "71": 4,
-      "72": 0,
-      "73": 0,
-      "74": 0,
-      "75": 0,
-      "76": 0,
-      "77": 0,
-      "78": 0,
-      "79": 0,
-      "80": 0,
-      "81": 0,
-      "82": 0,
-      "83": 0,
-      "84": 0,
-      "85": 0,
-      "86": 0,
-      "87": 0,
-      "88": 4
+      "69": 21,
+      "70": 1,
+      "71": 21,
+      "72": 10,
+      "73": 1,
+      "74": 1,
+      "75": 1,
+      "76": 1,
+      "77": 1,
+      "78": 1,
+      "79": 1,
+      "80": 1,
+      "81": 1,
+      "82": 1,
+      "83": 1,
+      "84": 1,
+      "85": 10,
+      "86": 9,
+      "87": 9,
+      "88": 21
     },
     "f": {
       "0": 0,
-      "1": 0,
+      "1": 5,
       "2": 0,
-      "3": 0,
-      "4": 4,
-      "5": 0,
-      "6": 0,
-      "7": 0,
-      "8": 0,
+      "3": 5,
+      "4": 21,
+      "5": 1,
+      "6": 1,
+      "7": 1,
+      "8": 1,
       "9": 0,
       "10": 0,
-      "11": 0,
-      "12": 0,
-      "13": 0
+      "11": 1,
+      "12": 10,
+      "13": 1
     },
     "b": {
       "0": [
@@ -2351,28 +2351,28 @@
         0
       ],
       "1": [
-        0,
-        0
+        1,
+        4
       ],
       "2": [
-        0,
-        0
+        1,
+        4
       ],
       "3": [
-        0,
-        0
+        4,
+        1
       ],
       "4": [
-        0,
-        0
+        1,
+        1
       ],
       "5": [
-        0,
-        0
+        1,
+        9
       ],
       "6": [
-        0,
-        0
+        9,
+        1
       ]
     },
     "inputSourceMap": {
@@ -2413,8 +2413,8 @@
       ],
       "sourceRoot": "",
       "sources": [
-        "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/components/me/me.component.html",
-        "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/components/me/me.component.ts"
+        "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/components/me/me.component.html",
+        "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/components/me/me.component.ts"
       ],
       "sourcesContent": [
         "<div class=\"m3\">\n  <mat-card>\n    <mat-card-title>\n      <div fxLayout=\"row\" fxLayoutAlign=\"start center\">\n        <button mat-icon-button (click)=\"back()\">\n          <mat-icon>arrow_back</mat-icon>\n        </button>\n        <h1>User information</h1>\n      </div>\n    </mat-card-title>\n    <mat-card-content>\n      <div *ngIf=\"user\" fxLayout=\"column\" fxLayoutAlign=\"start center\">\n        <p>Name: {{ user.firstName }} {{ user.lastName | uppercase }}</p>\n        <p>Email: {{ user.email }}</p>\n        <p *ngIf=\"user.admin\" class=\"my2\">You are admin</p>\n        <div *ngIf=\"!user.admin\" fxLayout=\"column\" class=\"my2\" fxLayoutAlign=\"center center\">\n          <p>Delete my account:</p>\n          <button mat-raised-button color=\"warn\" (click)=\"delete()\">\n            <mat-icon>delete</mat-icon>\n            <span class=\"ml1\">Detail</span>\n          </button>\n        </div>\n        <div fxLayoutAlign=\"space-between center\" class=\"p2 w100\">\n\n          <p><i>Create at: </i> {{ user.createdAt | date: 'longDate'}}</p>\n          <p><i>Last update: </i> {{ user.updatedAt| date: 'longDate'}}</p>\n        </div>\n      </div>\n    </mat-card-content>\n  </mat-card>\n</div>",
@@ -2422,10 +2422,10 @@
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "dc47488924e21847c997bb62b2b6a0f3166f262a"
+    "hash": "d5d5e8ac788edd873363de66dec3351882b14569"
   },
-  "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/components/not-found/not-found.component.ts": {
-    "path": "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/components/not-found/not-found.component.ts",
+  "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/components/not-found/not-found.component.ts": {
+    "path": "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/components/not-found/not-found.component.ts",
     "statementMap": {
       "0": {
         "start": {
@@ -2667,29 +2667,29 @@
       }
     },
     "s": {
-      "0": 4,
-      "1": 4,
-      "2": 0,
-      "3": 4,
-      "4": 0,
-      "5": 0,
-      "6": 0,
-      "7": 0,
-      "8": 4
+      "0": 21,
+      "1": 21,
+      "2": 1,
+      "3": 21,
+      "4": 3,
+      "5": 1,
+      "6": 1,
+      "7": 1,
+      "8": 21
     },
     "f": {
-      "0": 4,
-      "1": 0,
-      "2": 0
+      "0": 21,
+      "1": 1,
+      "2": 3
     },
     "b": {
       "0": [
-        0,
-        0
+        1,
+        1
       ],
       "1": [
-        0,
-        0
+        1,
+        2
       ]
     },
     "inputSourceMap": {
@@ -2706,8 +2706,8 @@
       ],
       "sourceRoot": "",
       "sources": [
-        "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/components/not-found/not-found.component.ts",
-        "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/components/not-found/not-found.component.html"
+        "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/components/not-found/not-found.component.ts",
+        "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/components/not-found/not-found.component.html"
       ],
       "sourcesContent": [
         "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-not-found',\n  templateUrl: './not-found.component.html',\n  styleUrls: ['./not-found.component.scss']\n})\nexport class NotFoundComponent {\n}\n",
@@ -2715,10 +2715,10 @@
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "927f3cbe09ca82624f4fa60f91950598127ac6ea"
+    "hash": "d8d3fc129831a9f3f51722b00231ebd0234b6164"
   },
-  "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/guards/auth.guard.ts": {
-    "path": "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/guards/auth.guard.ts",
+  "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/guards/auth.guard.ts": {
+    "path": "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/guards/auth.guard.ts",
     "statementMap": {
       "0": {
         "start": {
@@ -3004,32 +3004,32 @@
       }
     },
     "s": {
-      "0": 4,
-      "1": 4,
-      "2": 4,
-      "3": 4,
+      "0": 21,
+      "1": 8,
+      "2": 8,
+      "3": 10,
       "4": 0,
       "5": 0,
-      "6": 4,
-      "7": 4,
-      "8": 4,
-      "9": 4,
-      "10": 4
+      "6": 10,
+      "7": 21,
+      "8": 8,
+      "9": 21,
+      "10": 21
     },
     "f": {
-      "0": 4,
-      "1": 4,
-      "2": 4,
-      "3": 4
+      "0": 21,
+      "1": 8,
+      "2": 10,
+      "3": 8
     },
     "b": {
       "0": [
         0,
-        4
+        10
       ],
       "1": [
-        4,
-        4
+        8,
+        8
       ]
     },
     "inputSourceMap": {
@@ -3050,17 +3050,17 @@
       ],
       "sourceRoot": "",
       "sources": [
-        "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/guards/auth.guard.ts"
+        "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/guards/auth.guard.ts"
       ],
       "sourcesContent": [
         "import {Injectable} from \"@angular/core\";\nimport {CanActivate, Router} from \"@angular/router\"; \nimport { SessionService } from \"../services/session.service\";\n\n@Injectable({providedIn: 'root'})\nexport class AuthGuard implements CanActivate {\n\n  constructor( \n    private router: Router,\n    private sessionService: SessionService,\n  ) {\n  }\n\n  public canActivate(): boolean {\n    if (!this.sessionService.isLogged) {\n      this.router.navigate(['login']);\n      return false;\n    }\n    return true;\n  }\n}"
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "824c605c6407a00e626950008ec7c41fd572886d"
+    "hash": "a1adfc42710f1b923e630f4686b04c10e45803f4"
   },
-  "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/guards/unauth.guard.ts": {
-    "path": "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/guards/unauth.guard.ts",
+  "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/guards/unauth.guard.ts": {
+    "path": "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/guards/unauth.guard.ts",
     "statementMap": {
       "0": {
         "start": {
@@ -3346,32 +3346,32 @@
       }
     },
     "s": {
-      "0": 4,
-      "1": 4,
-      "2": 4,
-      "3": 4,
+      "0": 21,
+      "1": 20,
+      "2": 20,
+      "3": 20,
       "4": 0,
       "5": 0,
-      "6": 4,
-      "7": 4,
-      "8": 4,
-      "9": 4,
-      "10": 4
+      "6": 20,
+      "7": 21,
+      "8": 20,
+      "9": 21,
+      "10": 21
     },
     "f": {
-      "0": 4,
-      "1": 4,
-      "2": 4,
-      "3": 4
+      "0": 21,
+      "1": 20,
+      "2": 20,
+      "3": 20
     },
     "b": {
       "0": [
         0,
-        4
+        20
       ],
       "1": [
-        4,
-        4
+        20,
+        20
       ]
     },
     "inputSourceMap": {
@@ -3392,17 +3392,17 @@
       ],
       "sourceRoot": "",
       "sources": [
-        "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/guards/unauth.guard.ts"
+        "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/guards/unauth.guard.ts"
       ],
       "sourcesContent": [
         "import {Injectable} from \"@angular/core\";\nimport {CanActivate, Router} from \"@angular/router\"; \nimport { SessionService } from \"../services/session.service\";\n\n@Injectable({providedIn: 'root'})\nexport class UnauthGuard implements CanActivate {\n\n  constructor( \n    private router: Router,\n    private sessionService: SessionService,\n  ) {\n  }\n\n  public canActivate(): boolean {\n    if (this.sessionService.isLogged) {\n      this.router.navigate(['rentals']);\n      return false;\n    }\n    return true;\n  }\n}"
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "3852cea9f3372fffb649eec63284dcac22252660"
+    "hash": "3fc15ea2c17cc76fbda4e73b5ec38739d8314c00"
   },
-  "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/app-routing.module.ts": {
-    "path": "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/app-routing.module.ts",
+  "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/app-routing.module.ts": {
+    "path": "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/app-routing.module.ts",
     "statementMap": {
       "0": {
         "start": {
@@ -3700,30 +3700,30 @@
       }
     },
     "s": {
-      "0": 4,
-      "1": 4,
-      "2": 4,
-      "3": 4,
-      "4": 4,
-      "5": 4,
-      "6": 4,
-      "7": 4,
-      "8": 4,
-      "9": 4,
-      "10": 4
+      "0": 21,
+      "1": 21,
+      "2": 21,
+      "3": 8,
+      "4": 8,
+      "5": 21,
+      "6": 21,
+      "7": 21,
+      "8": 21,
+      "9": 21,
+      "10": 21
     },
     "f": {
-      "0": 4,
-      "1": 4,
-      "2": 4,
-      "3": 4,
-      "4": 4,
-      "5": 4
+      "0": 21,
+      "1": 21,
+      "2": 8,
+      "3": 8,
+      "4": 21,
+      "5": 21
     },
     "b": {
       "0": [
-        4,
-        4
+        21,
+        21
       ]
     },
     "inputSourceMap": {
@@ -3750,17 +3750,17 @@
       ],
       "sourceRoot": "",
       "sources": [
-        "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/app-routing.module.ts"
+        "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/app-routing.module.ts"
       ],
       "sourcesContent": [
         "import { NgModule } from '@angular/core';\nimport { RouterModule, Routes } from '@angular/router';\nimport { MeComponent } from './components/me/me.component';\nimport { NotFoundComponent } from './components/not-found/not-found.component';\nimport { AuthGuard } from './guards/auth.guard';\nimport { UnauthGuard } from './guards/unauth.guard';\n\nconst routes: Routes = [\n  {\n    path: '',\n    canActivate: [UnauthGuard],\n    loadChildren: () => import('./features/auth/auth.module').then(m => m.AuthModule)\n  },\n  {\n    path: 'sessions',\n    canActivate: [AuthGuard],\n    loadChildren: () => import('./features/sessions/sessions.module').then(m => m.SessionsModule)\n  },\n  {\n    path: 'me',\n    canActivate: [AuthGuard],\n    component: MeComponent\n  },\n  { path: '404', component: NotFoundComponent },\n  { path: '**', redirectTo: '404' }\n];\n\n@NgModule({\n  imports: [RouterModule.forRoot(routes)],\n  exports: [RouterModule]\n})\nexport class AppRoutingModule {\n}\n"
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "65b582799b35b0a6a1682ab26ed2a0a9dcf23f72"
+    "hash": "e07dbf60b7892c2ab1df02b1be1af45bf7184620"
   },
-  "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/features/auth/services/auth.service.ts": {
-    "path": "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/features/auth/services/auth.service.ts",
+  "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/features/auth/services/auth.service.ts": {
+    "path": "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/features/auth/services/auth.service.ts",
     "statementMap": {
       "0": {
         "start": {
@@ -4014,27 +4014,27 @@
       }
     },
     "s": {
-      "0": 4,
-      "1": 4,
-      "2": 4,
-      "3": 0,
-      "4": 4,
-      "5": 4,
-      "6": 4,
-      "7": 4,
-      "8": 4
+      "0": 21,
+      "1": 21,
+      "2": 21,
+      "3": 6,
+      "4": 8,
+      "5": 21,
+      "6": 21,
+      "7": 21,
+      "8": 21
     },
     "f": {
-      "0": 4,
-      "1": 4,
-      "2": 0,
-      "3": 4,
-      "4": 4
+      "0": 21,
+      "1": 21,
+      "2": 6,
+      "3": 8,
+      "4": 21
     },
     "b": {
       "0": [
-        4,
-        4
+        21,
+        21
       ]
     },
     "inputSourceMap": {
@@ -4056,17 +4056,17 @@
       ],
       "sourceRoot": "",
       "sources": [
-        "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/features/auth/services/auth.service.ts"
+        "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/features/auth/services/auth.service.ts"
       ],
       "sourcesContent": [
         "import { HttpClient } from '@angular/common/http';\nimport { Injectable } from '@angular/core';\nimport { Observable } from 'rxjs';\nimport { LoginRequest } from '../interfaces/loginRequest.interface';\nimport { RegisterRequest } from '../interfaces/registerRequest.interface';\nimport { SessionInformation } from 'src/app/interfaces/sessionInformation.interface';\n\n@Injectable({\n  providedIn: 'root'\n})\nexport class AuthService {\n\n  private pathService = 'api/auth';\n\n  constructor(private httpClient: HttpClient) { }\n\n  public register(registerRequest: RegisterRequest): Observable<void> {\n    return this.httpClient.post<void>(`${this.pathService}/register`, registerRequest);\n  }\n\n  public login(loginRequest: LoginRequest): Observable<SessionInformation> {\n    return this.httpClient.post<SessionInformation>(`${this.pathService}/login`, loginRequest);\n  }\n}\n"
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "d0373f936c26ec2df1a21ed77162105ca9f5d37f"
+    "hash": "1cb23c500fe1dd6c2edaffc3257467b3278526e3"
   },
-  "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/app.component.ts": {
-    "path": "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/app.component.ts",
+  "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/app.component.ts": {
+    "path": "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/app.component.ts",
     "statementMap": {
       "0": {
         "start": {
@@ -4950,86 +4950,86 @@
       }
     },
     "s": {
-      "0": 125,
-      "1": 4,
-      "2": 4,
-      "3": 4,
-      "4": 4,
-      "5": 4,
-      "6": 4,
-      "7": 4,
-      "8": 4,
-      "9": 4,
+      "0": 268,
+      "1": 8,
+      "2": 8,
+      "3": 8,
+      "4": 8,
+      "5": 8,
+      "6": 8,
+      "7": 8,
+      "8": 8,
+      "9": 8,
       "10": 0,
       "11": 0,
       "12": 0,
-      "13": 4,
-      "14": 4,
-      "15": 180,
-      "16": 4,
-      "17": 4,
-      "18": 4,
-      "19": 4,
-      "20": 4,
-      "21": 4,
-      "22": 4,
-      "23": 4,
-      "24": 4,
-      "25": 4,
-      "26": 297,
+      "13": 8,
+      "14": 8,
+      "15": 877,
+      "16": 21,
+      "17": 21,
+      "18": 21,
+      "19": 21,
+      "20": 21,
+      "21": 21,
+      "22": 21,
+      "23": 21,
+      "24": 21,
+      "25": 21,
+      "26": 1116,
       "27": 0,
       "28": 0,
-      "29": 4,
-      "30": 4,
-      "31": 4,
-      "32": 301,
-      "33": 4,
-      "34": 4,
-      "35": 4,
-      "36": 4,
-      "37": 4,
-      "38": 4,
-      "39": 4,
-      "40": 4,
-      "41": 4,
-      "42": 4,
-      "43": 301,
-      "44": 297,
-      "45": 297,
-      "46": 297,
-      "47": 4
+      "29": 21,
+      "30": 21,
+      "31": 21,
+      "32": 1137,
+      "33": 21,
+      "34": 21,
+      "35": 21,
+      "36": 21,
+      "37": 21,
+      "38": 21,
+      "39": 21,
+      "40": 21,
+      "41": 21,
+      "42": 21,
+      "43": 1137,
+      "44": 1116,
+      "45": 1116,
+      "46": 1116,
+      "47": 21
     },
     "f": {
-      "0": 125,
+      "0": 268,
       "1": 0,
-      "2": 180,
-      "3": 4,
-      "4": 4,
-      "5": 297,
+      "2": 877,
+      "3": 21,
+      "4": 21,
+      "5": 1116,
       "6": 0,
-      "7": 4,
-      "8": 301
+      "7": 21,
+      "8": 1137
     },
     "b": {
       "0": [
-        4,
-        121
+        8,
+        260
       ],
       "1": [
-        4,
-        176
+        21,
+        856
       ],
       "2": [
-        4,
-        4
+        21,
+        21
       ],
       "3": [
-        4,
-        297
+        21,
+        1116
       ],
       "4": [
-        297,
-        4
+        1116,
+        21
       ]
     },
     "inputSourceMap": {
@@ -5055,8 +5055,8 @@
       ],
       "sourceRoot": "",
       "sources": [
-        "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/app.component.html",
-        "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/app.component.ts"
+        "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/app.component.html",
+        "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/app.component.ts"
       ],
       "sourcesContent": [
         "<div class=\"app\">\n  <mat-toolbar color=\"primary\" fxLayout=\"row\" fxLayoutAlign=\"space-between center\">\n    <span>Yoga app</span>\n    <div *ngIf=\"$isLogged() | async; else notLogged\">\n      <span routerLink=\"sessions\" class=\"link\">Sessions</span>\n      <span routerLink=\"me\" class=\"link\">Account</span>\n      <span (click)=\"logout()\" class=\"link\">Logout</span>\n    </div>\n    <ng-template #notLogged>\n      <div>\n        <span routerLink=\"login\" class=\"link\">Login</span>\n        <span routerLink=\"register\" class=\"link\">Register</span>\n      </div>\n    </ng-template>\n  </mat-toolbar>\n  <div>\n    <router-outlet></router-outlet>\n  </div>\n</div>\n",
@@ -5064,10 +5064,10 @@
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "ec78e467bfa8679ef3692bae97034f7840ddf200"
+    "hash": "9f39a92c64052b7b7d08a9337d3c37f51de4be65"
   },
-  "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/interceptors/jwt.interceptor.ts": {
-    "path": "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/interceptors/jwt.interceptor.ts",
+  "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/interceptors/jwt.interceptor.ts": {
+    "path": "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/interceptors/jwt.interceptor.ts",
     "statementMap": {
       "0": {
         "start": {
@@ -5333,30 +5333,30 @@
       }
     },
     "s": {
-      "0": 4,
-      "1": 4,
-      "2": 23,
-      "3": 19,
-      "4": 23,
-      "5": 4,
-      "6": 4,
-      "7": 4,
-      "8": 4
+      "0": 21,
+      "1": 14,
+      "2": 42,
+      "3": 28,
+      "4": 42,
+      "5": 21,
+      "6": 14,
+      "7": 21,
+      "8": 21
     },
     "f": {
-      "0": 4,
-      "1": 4,
-      "2": 23,
-      "3": 4
+      "0": 21,
+      "1": 14,
+      "2": 42,
+      "3": 14
     },
     "b": {
       "0": [
-        19,
-        4
+        28,
+        14
       ],
       "1": [
-        4,
-        4
+        14,
+        14
       ]
     },
     "inputSourceMap": {
@@ -5384,17 +5384,17 @@
       ],
       "sourceRoot": "",
       "sources": [
-        "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/interceptors/jwt.interceptor.ts"
+        "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/interceptors/jwt.interceptor.ts"
       ],
       "sourcesContent": [
         "import { HttpHandler, HttpInterceptor, HttpRequest } from \"@angular/common/http\";\nimport { Injectable } from \"@angular/core\";\nimport { SessionService } from '../services/session.service';\n\n@Injectable({ providedIn: 'root' })\nexport class JwtInterceptor implements HttpInterceptor {\n  constructor(private sessionService: SessionService) {}\n\n  public intercept(request: HttpRequest<any>, next: HttpHandler) {\n    if (this.sessionService.isLogged) {\n      request = request.clone({\n        setHeaders: {\n          Authorization: `Bearer ${this.sessionService.sessionInformation!.token}`,\n        },\n      });\n    }\n    return next.handle(request);\n  }\n}\n"
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "e08bca8239a38fa060f7c1cbfbcb0bf7597b9682"
+    "hash": "248019b7314d53e799cb21cddffd271f05ed8aa7"
   },
-  "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/app.module.ts": {
-    "path": "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/app.module.ts",
+  "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/app.module.ts": {
+    "path": "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/app.module.ts",
     "statementMap": {
       "0": {
         "start": {
@@ -5556,22 +5556,22 @@
       }
     },
     "s": {
-      "0": 4,
-      "1": 4,
-      "2": 4,
-      "3": 4,
-      "4": 4,
-      "5": 4,
-      "6": 4
+      "0": 21,
+      "1": 21,
+      "2": 21,
+      "3": 21,
+      "4": 21,
+      "5": 21,
+      "6": 21
     },
     "f": {
-      "0": 4,
-      "1": 4
+      "0": 21,
+      "1": 21
     },
     "b": {
       "0": [
-        4,
-        4
+        21,
+        21
       ]
     },
     "inputSourceMap": {
@@ -5601,17 +5601,17 @@
       ],
       "sourceRoot": "",
       "sources": [
-        "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/app.module.ts"
+        "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/app.module.ts"
       ],
       "sourcesContent": [
         "import { NgModule } from '@angular/core';\nimport { MatSnackBarModule } from '@angular/material/snack-bar';\nimport { BrowserModule } from '@angular/platform-browser';\n\nimport { AppRoutingModule } from './app-routing.module';\nimport { AppComponent } from './app.component';\nimport { BrowserAnimationsModule } from '@angular/platform-browser/animations';\nimport { NotFoundComponent } from './components/not-found/not-found.component';\nimport { MatButtonModule } from '@angular/material/button';\nimport { MatIconModule } from '@angular/material/icon';\nimport { MatToolbarModule } from '@angular/material/toolbar';\nimport { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';\nimport { JwtInterceptor } from './interceptors/jwt.interceptor';\nimport { MatCardModule } from '@angular/material/card';\nimport { FlexLayoutModule } from '@angular/flex-layout';\nimport { MeComponent } from './components/me/me.component';\n\nconst materialModule = [\n  MatButtonModule,\n  MatCardModule,\n  MatIconModule,\n  MatSnackBarModule,\n  MatToolbarModule,\n]\n\n@NgModule({\n  declarations: [\n    AppComponent,\n    NotFoundComponent,\n    MeComponent,\n  ],\n  imports: [\n    BrowserModule,\n    AppRoutingModule,\n    BrowserAnimationsModule, \n    FlexLayoutModule,\n    HttpClientModule,\n    ...materialModule\n  ],\n  providers: [\n    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },\n  ],\n  bootstrap: [AppComponent]\n})\nexport class AppModule { }\n"
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "0f436196b4a776f35601a2e62b3dfe77355371de"
+    "hash": "54c514b87b641bfba04f67b33c62b8b128961cab"
   },
-  "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/environments/environment.ts": {
-    "path": "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/environments/environment.ts",
+  "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/environments/environment.ts": {
+    "path": "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/environments/environment.ts",
     "statementMap": {
       "0": {
         "start": {
@@ -5627,7 +5627,7 @@
     "fnMap": {},
     "branchMap": {},
     "s": {
-      "0": 4
+      "0": 21
     },
     "f": {},
     "b": {},
@@ -5641,17 +5641,17 @@
       ],
       "sourceRoot": "",
       "sources": [
-        "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/environments/environment.ts"
+        "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/environments/environment.ts"
       ],
       "sourcesContent": [
         "export const environment = {\n  baseUrl: 'localhost:8080/api/',\n  production: false\n};\n"
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "fb94892da19bc12d5cefb4b6e84f0090efda35f3"
+    "hash": "e7ec0e047346b0ea3494b102bfc3a3c80702187c"
   },
-  "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/main.ts": {
-    "path": "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/main.ts",
+  "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/main.ts": {
+    "path": "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/main.ts",
     "statementMap": {
       "0": {
         "start": {
@@ -5759,9 +5759,9 @@
       }
     },
     "s": {
-      "0": 4,
+      "0": 21,
       "1": 0,
-      "2": 4,
+      "2": 21,
       "3": 0
     },
     "f": {
@@ -5770,7 +5770,7 @@
     "b": {
       "0": [
         0,
-        4
+        21
       ]
     },
     "inputSourceMap": {
@@ -5790,17 +5790,17 @@
       ],
       "sourceRoot": "",
       "sources": [
-        "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/main.ts"
+        "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/main.ts"
       ],
       "sourcesContent": [
         "import { enableProdMode } from '@angular/core';\nimport { platformBrowserDynamic } from '@angular/platform-browser-dynamic';\n\nimport { AppModule } from './app/app.module';\nimport { environment } from './environments/environment';\n\nif (environment.production) {\n  enableProdMode();\n}\n\nplatformBrowserDynamic().bootstrapModule(AppModule)\n  .catch(err => console.error(err));\n"
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "756c9e33e3f1a9efff967bacbbb51665a1d71daa"
+    "hash": "f869fb0ec6c7287b838e1b3d916c6438d2b63f12"
   },
-  "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/features/auth/components/login/login.component.ts": {
-    "path": "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/features/auth/components/login/login.component.ts",
+  "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/features/auth/components/login/login.component.ts": {
+    "path": "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/features/auth/components/login/login.component.ts",
     "statementMap": {
       "0": {
         "start": {
@@ -6838,71 +6838,71 @@
       "1": 0,
       "2": 0,
       "3": 0,
-      "4": 4,
-      "5": 4,
-      "6": 4,
-      "7": 4,
-      "8": 4,
-      "9": 4,
-      "10": 4,
-      "11": 4,
-      "12": 4,
-      "13": 4,
-      "14": 4,
-      "15": 4,
+      "4": 21,
+      "5": 12,
+      "6": 12,
+      "7": 12,
+      "8": 12,
+      "9": 12,
+      "10": 12,
+      "11": 12,
+      "12": 8,
+      "13": 8,
+      "14": 8,
+      "15": 8,
       "16": 0,
-      "17": 4,
-      "18": 4,
-      "19": 4,
-      "20": 172,
-      "21": 4,
-      "22": 4,
-      "23": 4,
-      "24": 4,
-      "25": 4,
-      "26": 4,
-      "27": 4,
-      "28": 4,
-      "29": 4,
-      "30": 4,
-      "31": 4,
-      "32": 4,
-      "33": 4,
-      "34": 8,
-      "35": 4,
-      "36": 4,
-      "37": 4,
-      "38": 4,
-      "39": 4,
-      "40": 4,
-      "41": 4,
-      "42": 4,
-      "43": 172,
-      "44": 168,
-      "45": 168,
-      "46": 168,
-      "47": 168,
-      "48": 168,
-      "49": 168,
-      "50": 168,
-      "51": 168,
-      "52": 168,
-      "53": 168,
-      "54": 168,
-      "55": 168,
-      "56": 4
+      "17": 21,
+      "18": 12,
+      "19": 21,
+      "20": 356,
+      "21": 12,
+      "22": 12,
+      "23": 12,
+      "24": 12,
+      "25": 12,
+      "26": 8,
+      "27": 12,
+      "28": 12,
+      "29": 12,
+      "30": 12,
+      "31": 12,
+      "32": 12,
+      "33": 12,
+      "34": 16,
+      "35": 12,
+      "36": 12,
+      "37": 12,
+      "38": 12,
+      "39": 12,
+      "40": 12,
+      "41": 12,
+      "42": 12,
+      "43": 356,
+      "44": 344,
+      "45": 344,
+      "46": 344,
+      "47": 344,
+      "48": 344,
+      "49": 344,
+      "50": 344,
+      "51": 344,
+      "52": 344,
+      "53": 344,
+      "54": 344,
+      "55": 344,
+      "56": 21
     },
     "f": {
       "0": 0,
-      "1": 4,
-      "2": 4,
-      "3": 4,
-      "4": 4,
+      "1": 21,
+      "2": 12,
+      "3": 8,
+      "4": 8,
       "5": 0,
-      "6": 4,
-      "7": 172,
-      "8": 4,
-      "9": 8
+      "6": 12,
+      "7": 356,
+      "8": 8,
+      "9": 16
     },
     "b": {
       "0": [
@@ -6910,24 +6910,24 @@
         0
       ],
       "1": [
-        4,
-        4
+        12,
+        12
       ],
       "2": [
-        4,
-        168
+        12,
+        344
       ],
       "3": [
-        168,
-        4
+        344,
+        12
       ],
       "4": [
-        160,
-        8
+        328,
+        16
       ],
       "5": [
-        160,
-        8
+        328,
+        16
       ]
     },
     "inputSourceMap": {
@@ -6968,8 +6968,8 @@
       ],
       "sourceRoot": "",
       "sources": [
-        "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/features/auth/components/login/login.component.ts",
-        "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/features/auth/components/login/login.component.html"
+        "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/features/auth/components/login/login.component.ts",
+        "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/features/auth/components/login/login.component.html"
       ],
       "sourcesContent": [
         "import { Component } from '@angular/core';\nimport { FormBuilder, Validators } from '@angular/forms';\nimport { Router } from '@angular/router';\nimport { SessionInformation } from 'src/app/interfaces/sessionInformation.interface';\nimport { SessionService } from 'src/app/services/session.service';\nimport { LoginRequest } from '../../interfaces/loginRequest.interface';\nimport { AuthService } from '../../services/auth.service';\n\n@Component({\n  selector: 'app-login',\n  templateUrl: './login.component.html',\n  styleUrls: ['./login.component.scss']\n})\nexport class LoginComponent {\n  public hide = true;\n  public onError = false;\n\n  public form = this.fb.group({\n    email: [\n      '',\n      [\n        Validators.required,\n        Validators.email\n      ]\n    ],\n    password: [\n      '',\n      [\n        Validators.required,\n        Validators.min(3)\n      ]\n    ]\n  });\n\n  constructor(private authService: AuthService,\n              private fb: FormBuilder,\n              private router: Router,\n              private sessionService: SessionService) {\n  }\n\n  public submit(): void {\n    const loginRequest = this.form.value as LoginRequest;\n    this.authService.login(loginRequest).subscribe({\n      next: (response: SessionInformation) => {\n        this.sessionService.logIn(response);\n        this.router.navigate(['/sessions']);\n      },\n      error: error => this.onError = true,\n    });\n  }\n}\n",
@@ -6977,10 +6977,10 @@
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "dfb879a8d3e2bd4f43ac954e3e50099fdba4661f"
+    "hash": "bffc1edaf27f9aa2dbc0f5606d3c58c4cf82069c"
   },
-  "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/features/auth/components/register/register.component.ts": {
-    "path": "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/features/auth/components/register/register.component.ts",
+  "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/features/auth/components/register/register.component.ts": {
+    "path": "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/features/auth/components/register/register.component.ts",
     "statementMap": {
       "0": {
         "start": {
@@ -7838,83 +7838,83 @@
       }
     },
     "s": {
-      "0": 0,
-      "1": 0,
-      "2": 0,
-      "3": 0,
-      "4": 4,
-      "5": 0,
-      "6": 0,
-      "7": 0,
-      "8": 0,
-      "9": 0,
-      "10": 0,
-      "11": 0,
-      "12": 0,
-      "13": 0,
-      "14": 4,
-      "15": 0,
-      "16": 4,
-      "17": 0,
-      "18": 0,
-      "19": 0,
-      "20": 0,
-      "21": 0,
-      "22": 0,
-      "23": 0,
-      "24": 0,
-      "25": 0,
-      "26": 0,
-      "27": 0,
-      "28": 0,
-      "29": 0,
-      "30": 0,
-      "31": 0,
-      "32": 0,
-      "33": 0,
-      "34": 0,
-      "35": 0,
-      "36": 0,
-      "37": 0,
-      "38": 0,
-      "39": 0,
-      "40": 0,
-      "41": 0,
-      "42": 0,
-      "43": 0,
-      "44": 0,
-      "45": 0,
-      "46": 0,
-      "47": 0,
-      "48": 4
+      "0": 6,
+      "1": 2,
+      "2": 2,
+      "3": 2,
+      "4": 21,
+      "5": 12,
+      "6": 12,
+      "7": 12,
+      "8": 12,
+      "9": 12,
+      "10": 6,
+      "11": 6,
+      "12": 4,
+      "13": 2,
+      "14": 21,
+      "15": 12,
+      "16": 21,
+      "17": 454,
+      "18": 12,
+      "19": 12,
+      "20": 12,
+      "21": 12,
+      "22": 12,
+      "23": 6,
+      "24": 12,
+      "25": 12,
+      "26": 12,
+      "27": 12,
+      "28": 12,
+      "29": 12,
+      "30": 12,
+      "31": 12,
+      "32": 12,
+      "33": 12,
+      "34": 12,
+      "35": 12,
+      "36": 12,
+      "37": 12,
+      "38": 12,
+      "39": 12,
+      "40": 12,
+      "41": 454,
+      "42": 442,
+      "43": 442,
+      "44": 442,
+      "45": 442,
+      "46": 442,
+      "47": 442,
+      "48": 21
     },
     "f": {
-      "0": 0,
-      "1": 4,
-      "2": 0,
-      "3": 0,
-      "4": 0,
-      "5": 0,
-      "6": 0,
-      "7": 0,
-      "8": 0
+      "0": 6,
+      "1": 21,
+      "2": 12,
+      "3": 6,
+      "4": 4,
+      "5": 2,
+      "6": 12,
+      "7": 454,
+      "8": 6
     },
     "b": {
       "0": [
-        0,
-        0
+        2,
+        4
       ],
       "1": [
-        0,
-        0
+        12,
+        12
       ],
       "2": [
-        0,
-        0
+        12,
+        442
       ],
       "3": [
-        0,
-        0
+        442,
+        12
       ]
     },
     "inputSourceMap": {
@@ -7956,8 +7956,8 @@
       ],
       "sourceRoot": "",
       "sources": [
-        "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/features/auth/components/register/register.component.ts",
-        "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/features/auth/components/register/register.component.html"
+        "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/features/auth/components/register/register.component.ts",
+        "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/features/auth/components/register/register.component.html"
       ],
       "sourcesContent": [
         "import { Component } from '@angular/core';\nimport { FormBuilder, Validators } from '@angular/forms';\nimport { Router } from '@angular/router';\nimport { AuthService } from '../../services/auth.service';\nimport { RegisterRequest } from '../../interfaces/registerRequest.interface';\n\n@Component({\n  selector: 'app-register',\n  templateUrl: './register.component.html',\n  styleUrls: ['./register.component.scss'],\n})\nexport class RegisterComponent {\n  public onError = false;\n\n  public form = this.fb.group({\n    email: ['', [Validators.required, Validators.email]],\n    firstName: [\n      '',\n      [Validators.required, Validators.min(3), Validators.max(20)],\n    ],\n    lastName: [\n      '',\n      [Validators.required, Validators.min(3), Validators.max(20)],\n    ],\n    password: [\n      '',\n      [Validators.required, Validators.min(3), Validators.max(40)],\n    ],\n  });\n\n  constructor(\n    private authService: AuthService,\n    private fb: FormBuilder,\n    private router: Router\n  ) {}\n\n  public submit(): void {\n    const registerRequest = this.form.value as RegisterRequest;\n    this.authService.register(registerRequest).subscribe({\n      next: (_: void) => this.router.navigate(['/login']),\n      error: (_) => (this.onError = true),\n    });\n  }\n}\n",
@@ -7965,10 +7965,10 @@
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "95d195245fb8671aa9ec5c2576b372b48552c897"
+    "hash": "804b5bafa11958ea0c0a1d75b4b743d60567f50e"
   },
-  "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/features/auth/auth-routing.module.ts": {
-    "path": "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/features/auth/auth-routing.module.ts",
+  "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/features/auth/auth-routing.module.ts": {
+    "path": "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/features/auth/auth-routing.module.ts",
     "statementMap": {
       "0": {
         "start": {
@@ -8130,22 +8130,22 @@
       }
     },
     "s": {
-      "0": 4,
-      "1": 4,
-      "2": 4,
-      "3": 4,
-      "4": 4,
-      "5": 4,
-      "6": 4
+      "0": 21,
+      "1": 21,
+      "2": 21,
+      "3": 21,
+      "4": 21,
+      "5": 21,
+      "6": 21
     },
     "f": {
-      "0": 4,
-      "1": 4
+      "0": 21,
+      "1": 21
     },
     "b": {
       "0": [
-        4,
-        4
+        21,
+        21
       ]
     },
     "inputSourceMap": {
@@ -8164,17 +8164,17 @@
       ],
       "sourceRoot": "",
       "sources": [
-        "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/features/auth/auth-routing.module.ts"
+        "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/features/auth/auth-routing.module.ts"
       ],
       "sourcesContent": [
         "import { NgModule } from '@angular/core';\nimport { RouterModule, Routes } from '@angular/router';\nimport { LoginComponent } from './components/login/login.component';\nimport { RegisterComponent } from './components/register/register.component';\n\n\nconst routes: Routes = [\n  { title: 'Login', path: 'login', component: LoginComponent },\n  { title: 'Register', path: 'register', component: RegisterComponent }\n];\n\n@NgModule({\n  imports: [RouterModule.forChild(routes)],\n  exports: [RouterModule]\n})\nexport class AuthRoutingModule { }\n"
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "8cc1a29845a3477ae263a428cb845d813338789c"
+    "hash": "e28a58bd48ccbf438acefb05d27f521a507bab8e"
   },
-  "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/features/auth/auth.module.ts": {
-    "path": "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/features/auth/auth.module.ts",
+  "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/features/auth/auth.module.ts": {
+    "path": "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/features/auth/auth.module.ts",
     "statementMap": {
       "0": {
         "start": {
@@ -8336,22 +8336,22 @@
       }
     },
     "s": {
-      "0": 4,
-      "1": 4,
-      "2": 4,
-      "3": 4,
-      "4": 4,
-      "5": 4,
-      "6": 4
+      "0": 21,
+      "1": 21,
+      "2": 21,
+      "3": 21,
+      "4": 21,
+      "5": 21,
+      "6": 21
     },
     "f": {
-      "0": 4,
-      "1": 4
+      "0": 21,
+      "1": 21
     },
     "b": {
       "0": [
-        4,
-        4
+        21,
+        21
       ]
     },
     "inputSourceMap": {
@@ -8373,17 +8373,17 @@
       ],
       "sourceRoot": "",
       "sources": [
-        "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/features/auth/auth.module.ts"
+        "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/features/auth/auth.module.ts"
       ],
       "sourcesContent": [
         "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { AuthRoutingModule } from './auth-routing.module';\nimport { RegisterComponent } from './components/register/register.component';\nimport { LoginComponent } from './components/login/login.component';\nimport { MatCardModule } from '@angular/material/card';\nimport { MatFormFieldModule } from '@angular/material/form-field';\nimport { MatButtonModule } from '@angular/material/button';\nimport { MatInputModule } from '@angular/material/input';\nimport { FlexLayoutModule } from '@angular/flex-layout';\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\nimport { MatIconModule } from '@angular/material/icon';\n\nconst materialModules = [\n  MatButtonModule,\n  MatCardModule,\n  MatFormFieldModule,\n  MatIconModule,\n  MatInputModule\n]\n\n@NgModule({\n  declarations: [\n    RegisterComponent,\n    LoginComponent\n  ],\n  imports: [\n    AuthRoutingModule,\n    CommonModule,\n    FlexLayoutModule,\n    FormsModule,\n    ReactiveFormsModule,\n    ...materialModules\n  ]\n})\nexport class AuthModule { }\n"
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "51ee55ba916c8d409bad22f3792786862f3d4914"
+    "hash": "4b3e98d01f8b3f270d3fe3874271c5b9dfd422e8"
   },
-  "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/features/sessions/services/session-api.service.ts": {
-    "path": "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/features/sessions/services/session-api.service.ts",
+  "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/features/sessions/services/session-api.service.ts": {
+    "path": "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/features/sessions/services/session-api.service.ts",
     "statementMap": {
       "0": {
         "start": {
@@ -8807,37 +8807,37 @@
       }
     },
     "s": {
-      "0": 4,
-      "1": 4,
-      "2": 4,
-      "3": 4,
+      "0": 8,
+      "1": 8,
+      "2": 8,
+      "3": 10,
       "4": 6,
       "5": 0,
-      "6": 0,
+      "6": 1,
       "7": 0,
       "8": 2,
       "9": 1,
-      "10": 4,
-      "11": 4,
-      "12": 4,
-      "13": 4
+      "10": 8,
+      "11": 8,
+      "12": 8,
+      "13": 8
     },
     "f": {
-      "0": 4,
-      "1": 4,
-      "2": 4,
+      "0": 8,
+      "1": 8,
+      "2": 10,
       "3": 6,
       "4": 0,
-      "5": 0,
+      "5": 1,
       "6": 0,
       "7": 2,
       "8": 1,
-      "9": 4
+      "9": 8
     },
     "b": {
       "0": [
-        4,
-        4
+        8,
+        8
       ]
     },
     "inputSourceMap": {
@@ -8867,17 +8867,17 @@
       ],
       "sourceRoot": "",
       "sources": [
-        "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/features/sessions/services/session-api.service.ts"
+        "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/features/sessions/services/session-api.service.ts"
       ],
       "sourcesContent": [
         "import { HttpClient } from '@angular/common/http';\nimport { Injectable } from '@angular/core';\nimport { Observable } from 'rxjs';\nimport { Session } from '../interfaces/session.interface';\n\n@Injectable({\n  providedIn: 'root'\n})\nexport class SessionApiService {\n\n  private pathService = 'api/session';\n\n  constructor(private httpClient: HttpClient) {\n  }\n\n  public all(): Observable<Session[]> {\n    return this.httpClient.get<Session[]>(this.pathService);\n  }\n\n  public detail(id: string): Observable<Session> {\n    return this.httpClient.get<Session>(`${this.pathService}/${id}`);\n  }\n\n  public delete(id: string): Observable<any> {\n    return this.httpClient.delete(`${this.pathService}/${id}`);\n  }\n\n  public create(session: Session): Observable<Session> {\n    return this.httpClient.post<Session>(this.pathService, session);\n  }\n\n  public update(id: string, session: Session): Observable<Session> {\n    return this.httpClient.put<Session>(`${this.pathService}/${id}`, session);\n  }\n\n  public participate(id: string, userId: string): Observable<void> {\n    return this.httpClient.post<void>(`${this.pathService}/${id}/participate/${userId}`, null);\n  }\n\n  public unParticipate(id: string, userId: string): Observable<void> {\n    return this.httpClient.delete<void>(`${this.pathService}/${id}/participate/${userId}`);\n  }\n\n}\n"
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "0684da6f4c041f886e875f65aec9b36fcbb4d5bd"
+    "hash": "e045da3334d6db12a82cd95bba7227d23c5acf46"
   },
-  "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/services/teacher.service.ts": {
-    "path": "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/services/teacher.service.ts",
+  "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/services/teacher.service.ts": {
+    "path": "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/services/teacher.service.ts",
     "statementMap": {
       "0": {
         "start": {
@@ -9131,27 +9131,27 @@
       }
     },
     "s": {
-      "0": 4,
-      "1": 3,
-      "2": 3,
-      "3": 0,
+      "0": 8,
+      "1": 4,
+      "2": 4,
+      "3": 1,
       "4": 6,
-      "5": 4,
-      "6": 3,
-      "7": 4,
-      "8": 4
+      "5": 8,
+      "6": 4,
+      "7": 8,
+      "8": 8
     },
     "f": {
-      "0": 4,
-      "1": 3,
-      "2": 0,
+      "0": 8,
+      "1": 4,
+      "2": 1,
       "3": 6,
-      "4": 3
+      "4": 4
     },
     "b": {
       "0": [
-        3,
-        3
+        4,
+        4
       ]
     },
     "inputSourceMap": {
@@ -9172,17 +9172,17 @@
       ],
       "sourceRoot": "",
       "sources": [
-        "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/services/teacher.service.ts"
+        "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/services/teacher.service.ts"
       ],
       "sourcesContent": [
         "import { HttpClient } from '@angular/common/http';\nimport { Injectable } from '@angular/core';\nimport { Observable } from 'rxjs';\nimport { Teacher } from '../interfaces/teacher.interface';\n\n@Injectable({\n  providedIn: 'root'\n})\nexport class TeacherService {\n\n  private pathService = 'api/teacher';\n\n  constructor(private httpClient: HttpClient) { }\n\n  public all(): Observable<Teacher[]> {\n    return this.httpClient.get<Teacher[]>(this.pathService);\n  }\n\n  public detail(id: string): Observable<Teacher> {\n    return this.httpClient.get<Teacher>(`${this.pathService}/${id}`);\n  }\n}\n"
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "da7733f78f8fc593c905000ad91eac8122f5a724"
+    "hash": "5c3eb923b3c6b96c332a0fbe694f07eaaa8030ec"
   },
-  "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/features/sessions/components/detail/detail.component.ts": {
-    "path": "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/features/sessions/components/detail/detail.component.ts",
+  "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/features/sessions/components/detail/detail.component.ts": {
+    "path": "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/features/sessions/components/detail/detail.component.ts",
     "statementMap": {
       "0": {
         "start": {
@@ -12121,7 +12121,7 @@
       "132": 66,
       "133": 66,
       "134": 66,
-      "135": 4,
+      "135": 8,
       "136": 3,
       "137": 3,
       "138": 3,
@@ -12149,9 +12149,9 @@
       "160": 2,
       "161": 6,
       "162": 6,
-      "163": 4,
+      "163": 8,
       "164": 3,
-      "165": 4,
+      "165": 8,
       "166": 84,
       "167": 3,
       "168": 3,
@@ -12159,7 +12159,7 @@
       "170": 84,
       "171": 81,
       "172": 81,
-      "173": 4
+      "173": 8
     },
     "f": {
       "0": 0,
@@ -12172,7 +12172,7 @@
       "7": 54,
       "8": 69,
       "9": 0,
-      "10": 4,
+      "10": 8,
       "11": 3,
       "12": 3,
       "13": 0,
@@ -12292,8 +12292,8 @@
       ],
       "sourceRoot": "",
       "sources": [
-        "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/features/sessions/components/detail/detail.component.html",
-        "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/features/sessions/components/detail/detail.component.ts"
+        "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/features/sessions/components/detail/detail.component.html",
+        "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/features/sessions/components/detail/detail.component.ts"
       ],
       "sourcesContent": [
         "<div class=\"m3\">\n  <mat-card *ngIf=\"session\">\n    <mat-card-title>\n      <div fxLayout=\"row\" fxLayoutAlign=\"space-between center\">\n        <div fxLayout=\"row\" fxLayoutAlign=\"start center\">\n          <button mat-icon-button (click)=\"back()\">\n            <mat-icon>arrow_back</mat-icon>\n          </button>\n          <h1>{{session.name | titlecase}}</h1>\n        </div>\n        <div>\n          <button *ngIf=\"isAdmin\" mat-raised-button color=\"warn\" (click)=\"delete()\">\n            <mat-icon>delete</mat-icon>\n            <span class=\"ml1\">Delete</span>\n          </button>\n          <div *ngIf=\"!isAdmin\">\n            <button *ngIf=\"!isParticipate\" mat-raised-button color=\"primary\" (click)=\"participate()\">\n              <mat-icon>person_add</mat-icon>\n              <span class=\"ml1\">Participate</span>\n            </button>\n            <button *ngIf=\"isParticipate\" mat-raised-button color=\"warn\" (click)=\"unParticipate()\">\n              <mat-icon>person_remove</mat-icon>\n              <span class=\"ml1\">Do not participate</span>\n            </button>\n\n          </div>\n\n\n        </div>\n      </div>\n    </mat-card-title>\n    <mat-card-subtitle *ngIf=\"teacher\">\n      <div fxLayoutAlign=\"start center\" class=\"ml3\">\n        <mat-icon>\n          people\n        </mat-icon>\n        <span class=\"ml1\">{{ teacher.firstName }} {{ teacher.lastName | uppercase }}</span>\n      </div>\n    </mat-card-subtitle>\n    <div mat-card-image fxLayoutAlign=\"center center\">\n      <img class=\"picture\" src=\"assets/sessions.png\" alt=\"Yoga session\">\n    </div>\n    <mat-card-content>\n      <div class=\"my2\" fxLayout=\"row\" fxLayoutAlign=\"space-between center\">\n        <div fxLayoutAlign=\"start center\">\n          <mat-icon>\n            group\n          </mat-icon>\n          <span class=\"ml1\">{{ session.users.length }} attendees</span>\n        </div>\n        <div fxLayoutAlign=\"start center\">\n          <mat-icon>\n            calendar_month\n          </mat-icon>\n          <span class=\"ml1\">{{ session.date | date: 'longDate'}}</span>\n        </div>\n      </div>\n      <div class=\"description\">\n        <p>Description:</p>\n        {{ session.description }}\n        <br>\n      </div>\n      <div class=\"date\" class=\"my2\" fxLayout=\"row\" fxLayoutAlign=\"space-between center\">\n        <div class=\"created\"><i>Create at: </i> {{ session.createdAt| date: 'longDate'}}</div>\n        <div class=\"updated\"><i>Last update: </i> {{ session.updatedAt| date: 'longDate'}}</div>\n      </div>\n    </mat-card-content>\n  </mat-card>\n</div>\n",
@@ -12301,10 +12301,10 @@
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "ec5b3dd5257964a080eb027f2b2bbc7d354d5ea8"
+    "hash": "1ec5fb95a9325ebbad37ca626c9144043a62295c"
   },
-  "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/features/sessions/components/form/form.component.ts": {
-    "path": "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/features/sessions/components/form/form.component.ts",
+  "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/features/sessions/components/form/form.component.ts": {
+    "path": "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/features/sessions/components/form/form.component.ts",
     "statementMap": {
       "0": {
         "start": {
@@ -14322,194 +14322,194 @@
       }
     },
     "s": {
-      "0": 0,
-      "1": 0,
-      "2": 0,
-      "3": 0,
+      "0": 77,
+      "1": 1,
+      "2": 1,
+      "3": 1,
       "4": 0,
       "5": 0,
       "6": 0,
       "7": 0,
-      "8": 0,
-      "9": 0,
-      "10": 0,
-      "11": 0,
-      "12": 0,
-      "13": 0,
-      "14": 0,
-      "15": 0,
-      "16": 0,
-      "17": 0,
-      "18": 0,
-      "19": 0,
-      "20": 0,
-      "21": 0,
-      "22": 0,
-      "23": 0,
-      "24": 0,
-      "25": 0,
-      "26": 0,
-      "27": 0,
-      "28": 0,
-      "29": 0,
-      "30": 0,
-      "31": 0,
-      "32": 0,
-      "33": 0,
-      "34": 0,
-      "35": 0,
-      "36": 0,
-      "37": 0,
-      "38": 0,
-      "39": 0,
-      "40": 0,
-      "41": 0,
-      "42": 0,
-      "43": 0,
-      "44": 0,
-      "45": 0,
-      "46": 0,
-      "47": 0,
-      "48": 0,
-      "49": 0,
-      "50": 0,
-      "51": 0,
-      "52": 0,
-      "53": 0,
-      "54": 0,
-      "55": 0,
-      "56": 0,
-      "57": 4,
-      "58": 0,
-      "59": 0,
-      "60": 0,
-      "61": 0,
-      "62": 0,
-      "63": 0,
-      "64": 0,
-      "65": 0,
-      "66": 0,
-      "67": 0,
+      "8": 71,
+      "9": 1,
+      "10": 1,
+      "11": 1,
+      "12": 71,
+      "13": 70,
+      "14": 70,
+      "15": 70,
+      "16": 70,
+      "17": 77,
+      "18": 1,
+      "19": 1,
+      "20": 1,
+      "21": 1,
+      "22": 1,
+      "23": 1,
+      "24": 1,
+      "25": 1,
+      "26": 1,
+      "27": 1,
+      "28": 1,
+      "29": 1,
+      "30": 1,
+      "31": 1,
+      "32": 1,
+      "33": 1,
+      "34": 1,
+      "35": 1,
+      "36": 1,
+      "37": 1,
+      "38": 1,
+      "39": 1,
+      "40": 1,
+      "41": 1,
+      "42": 1,
+      "43": 1,
+      "44": 1,
+      "45": 1,
+      "46": 1,
+      "47": 1,
+      "48": 1,
+      "49": 77,
+      "50": 76,
+      "51": 76,
+      "52": 76,
+      "53": 76,
+      "54": 76,
+      "55": 76,
+      "56": 76,
+      "57": 8,
+      "58": 1,
+      "59": 1,
+      "60": 1,
+      "61": 1,
+      "62": 1,
+      "63": 1,
+      "64": 1,
+      "65": 1,
+      "66": 1,
+      "67": 1,
       "68": 0,
-      "69": 0,
-      "70": 0,
+      "69": 1,
+      "70": 1,
       "71": 0,
       "72": 0,
       "73": 0,
       "74": 0,
-      "75": 0,
-      "76": 0,
-      "77": 0,
-      "78": 0,
-      "79": 0,
+      "75": 1,
+      "76": 1,
+      "77": 1,
+      "78": 1,
+      "79": 1,
       "80": 0,
       "81": 0,
-      "82": 0,
-      "83": 0,
-      "84": 0,
-      "85": 4,
-      "86": 0,
-      "87": 4,
-      "88": 0,
-      "89": 0,
-      "90": 0,
-      "91": 0,
-      "92": 0,
-      "93": 0,
-      "94": 0,
-      "95": 0,
-      "96": 0,
-      "97": 0,
-      "98": 0,
-      "99": 0,
-      "100": 0,
-      "101": 0,
-      "102": 0,
-      "103": 0,
-      "104": 4
+      "82": 1,
+      "83": 1,
+      "84": 1,
+      "85": 8,
+      "86": 1,
+      "87": 8,
+      "88": 77,
+      "89": 1,
+      "90": 1,
+      "91": 1,
+      "92": 1,
+      "93": 1,
+      "94": 1,
+      "95": 1,
+      "96": 1,
+      "97": 77,
+      "98": 76,
+      "99": 76,
+      "100": 76,
+      "101": 76,
+      "102": 76,
+      "103": 76,
+      "104": 8
     },
     "f": {
-      "0": 0,
+      "0": 77,
       "1": 0,
-      "2": 0,
-      "3": 0,
-      "4": 0,
-      "5": 4,
-      "6": 0,
-      "7": 0,
+      "2": 71,
+      "3": 77,
+      "4": 1,
+      "5": 8,
+      "6": 1,
+      "7": 1,
       "8": 0,
-      "9": 0,
-      "10": 0,
+      "9": 1,
+      "10": 1,
       "11": 0,
-      "12": 0,
-      "13": 0,
-      "14": 0,
-      "15": 0
+      "12": 1,
+      "13": 1,
+      "14": 1,
+      "15": 77
     },
     "b": {
       "0": [
-        0,
-        0
+        1,
+        76
       ],
       "1": [
         0,
         0
       ],
       "2": [
-        0,
-        0
+        1,
+        70
       ],
       "3": [
-        0,
-        0
+        70,
+        1
       ],
       "4": [
-        0,
-        0
+        1,
+        76
       ],
       "5": [
-        0,
-        0
+        76,
+        1
       ],
       "6": [
         0,
-        0
+        1
       ],
       "7": [
         0,
-        0
+        1
       ],
       "8": [
-        0,
+        1,
         0
       ],
       "9": [
         0,
-        0
+        1
       ],
       "10": [
         0,
-        0
+        1
       ],
       "11": [
         0,
-        0
+        1
       ],
       "12": [
         0,
-        0
+        1
       ],
       "13": [
-        0,
-        0
+        1,
+        1
       ],
       "14": [
-        0,
-        0
+        1,
+        76
       ],
       "15": [
-        0,
-        0
+        76,
+        1
       ]
     },
     "inputSourceMap": {
@@ -14571,8 +14571,8 @@
       ],
       "sourceRoot": "",
       "sources": [
-        "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/features/sessions/components/form/form.component.ts",
-        "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/features/sessions/components/form/form.component.html"
+        "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/features/sessions/components/form/form.component.ts",
+        "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/features/sessions/components/form/form.component.html"
       ],
       "sourcesContent": [
         "import { Component, OnInit } from '@angular/core';\nimport { FormBuilder, FormGroup, Validators } from '@angular/forms';\nimport { MatSnackBar } from '@angular/material/snack-bar';\nimport { ActivatedRoute, Router } from '@angular/router';\nimport { SessionService } from '../../../../services/session.service';\nimport { TeacherService } from '../../../../services/teacher.service';\nimport { Session } from '../../interfaces/session.interface';\nimport { SessionApiService } from '../../services/session-api.service';\n\n@Component({\n  selector: 'app-form',\n  templateUrl: './form.component.html',\n  styleUrls: ['./form.component.scss']\n})\nexport class FormComponent implements OnInit {\n\n  public onUpdate: boolean = false;\n  public sessionForm: FormGroup | undefined;\n  public teachers$ = this.teacherService.all();\n  private id: string | undefined;\n\n  constructor(\n    private route: ActivatedRoute,\n    private fb: FormBuilder,\n    private matSnackBar: MatSnackBar,\n    private sessionApiService: SessionApiService,\n    private sessionService: SessionService,\n    private teacherService: TeacherService,\n    private router: Router\n  ) {\n  }\n\n  public ngOnInit(): void {\n    if (!this.sessionService.sessionInformation!.admin) {\n      this.router.navigate(['/sessions']);\n    }\n    const url = this.router.url;\n    if (url.includes('update')) {\n      this.onUpdate = true;\n      this.id = this.route.snapshot.paramMap.get('id')!;\n      this.sessionApiService\n        .detail(this.id)\n        .subscribe((session: Session) => this.initForm(session));\n    } else {\n      this.initForm();\n    }\n  }\n\n  public submit(): void {\n    const session = this.sessionForm?.value as Session;\n\n    if (!this.onUpdate) {\n      this.sessionApiService\n        .create(session)\n        .subscribe((_: Session) => this.exitPage('Session created !'));\n    } else {\n      this.sessionApiService\n        .update(this.id!, session)\n        .subscribe((_: Session) => this.exitPage('Session updated !'));\n    }\n  }\n\n  private initForm(session?: Session): void {\n    this.sessionForm = this.fb.group({\n      name: [\n        session ? session.name : '',\n        [Validators.required]\n      ],\n      date: [\n        session ? new Date(session.date).toISOString().split('T')[0] : '',\n        [Validators.required]\n      ],\n      teacher_id: [\n        session ? session.teacher_id : '',\n        [Validators.required]\n      ],\n      description: [\n        session ? session.description : '',\n        [\n          Validators.required,\n          Validators.max(2000)\n        ]\n      ],\n    });\n  }\n\n  private exitPage(message: string): void {\n    this.matSnackBar.open(message, 'Close', { duration: 3000 });\n    this.router.navigate(['sessions']);\n  }\n}\n",
@@ -14580,10 +14580,10 @@
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "b4b7654456bd777b86b021b437db23420b1cde4b"
+    "hash": "e17435652ad715fcafd51d6b515e16196152a99b"
   },
-  "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/features/sessions/components/list/list.component.ts": {
-    "path": "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/features/sessions/components/list/list.component.ts",
+  "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/features/sessions/components/list/list.component.ts": {
+    "path": "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/features/sessions/components/list/list.component.ts",
     "statementMap": {
       "0": {
         "start": {
@@ -15919,131 +15919,131 @@
       }
     },
     "s": {
-      "0": 0,
-      "1": 0,
-      "2": 0,
-      "3": 0,
-      "4": 0,
-      "5": 0,
-      "6": 0,
-      "7": 4,
-      "8": 0,
-      "9": 0,
-      "10": 0,
-      "11": 0,
-      "12": 0,
-      "13": 0,
-      "14": 0,
-      "15": 0,
-      "16": 0,
-      "17": 0,
-      "18": 0,
-      "19": 4,
-      "20": 4,
-      "21": 12,
-      "22": 4,
-      "23": 4,
-      "24": 4,
-      "25": 4,
-      "26": 4,
-      "27": 4,
-      "28": 4,
-      "29": 4,
-      "30": 4,
-      "31": 4,
-      "32": 4,
-      "33": 4,
-      "34": 4,
-      "35": 4,
-      "36": 4,
-      "37": 4,
-      "38": 4,
-      "39": 4,
-      "40": 4,
-      "41": 4,
-      "42": 4,
-      "43": 12,
-      "44": 8,
-      "45": 8,
-      "46": 8,
-      "47": 8,
-      "48": 8,
-      "49": 8,
-      "50": 8,
-      "51": 8,
-      "52": 8,
-      "53": 8,
-      "54": 8,
-      "55": 8,
-      "56": 4,
-      "57": 4,
-      "58": 4,
-      "59": 4,
-      "60": 40,
-      "61": 4,
-      "62": 4,
-      "63": 4,
-      "64": 36,
-      "65": 4,
-      "66": 4,
-      "67": 4,
-      "68": 4,
-      "69": 4,
-      "70": 4,
-      "71": 4,
-      "72": 4,
-      "73": 4,
-      "74": 36,
-      "75": 32,
-      "76": 32,
-      "77": 32,
-      "78": 32,
-      "79": 4
+      "0": 52,
+      "1": 6,
+      "2": 6,
+      "3": 6,
+      "4": 6,
+      "5": 6,
+      "6": 6,
+      "7": 8,
+      "8": 5,
+      "9": 15,
+      "10": 5,
+      "11": 5,
+      "12": 5,
+      "13": 5,
+      "14": 5,
+      "15": 5,
+      "16": 15,
+      "17": 10,
+      "18": 10,
+      "19": 8,
+      "20": 9,
+      "21": 27,
+      "22": 9,
+      "23": 9,
+      "24": 9,
+      "25": 9,
+      "26": 9,
+      "27": 9,
+      "28": 9,
+      "29": 9,
+      "30": 9,
+      "31": 9,
+      "32": 9,
+      "33": 9,
+      "34": 9,
+      "35": 9,
+      "36": 9,
+      "37": 9,
+      "38": 9,
+      "39": 9,
+      "40": 9,
+      "41": 9,
+      "42": 9,
+      "43": 27,
+      "44": 18,
+      "45": 18,
+      "46": 18,
+      "47": 18,
+      "48": 18,
+      "49": 18,
+      "50": 18,
+      "51": 18,
+      "52": 18,
+      "53": 18,
+      "54": 18,
+      "55": 18,
+      "56": 8,
+      "57": 10,
+      "58": 10,
+      "59": 10,
+      "60": 96,
+      "61": 8,
+      "62": 10,
+      "63": 8,
+      "64": 88,
+      "65": 10,
+      "66": 10,
+      "67": 10,
+      "68": 10,
+      "69": 10,
+      "70": 10,
+      "71": 10,
+      "72": 10,
+      "73": 10,
+      "74": 88,
+      "75": 78,
+      "76": 78,
+      "77": 78,
+      "78": 78,
+      "79": 8
     },
     "f": {
-      "0": 0,
-      "1": 0,
-      "2": 0,
-      "3": 4,
-      "4": 12,
-      "5": 4,
-      "6": 4,
-      "7": 40,
-      "8": 4,
-      "9": 36
+      "0": 52,
+      "1": 5,
+      "2": 15,
+      "3": 9,
+      "4": 27,
+      "5": 8,
+      "6": 10,
+      "7": 96,
+      "8": 10,
+      "9": 88
     },
     "b": {
       "0": [
-        0,
-        0
+        6,
+        46
       ],
       "1": [
-        0,
-        0
+        5,
+        10
       ],
       "2": [
-        0,
-        0
+        10,
+        5
       ],
       "3": [
-        4,
-        8
+        9,
+        18
       ],
       "4": [
-        8,
-        4
+        18,
+        9
       ],
       "5": [
-        4,
-        4
+        10,
+        10
       ],
       "6": [
-        4,
-        32
+        10,
+        78
       ],
       "7": [
-        32,
-        4
+        78,
+        10
       ]
     },
     "inputSourceMap": {
@@ -16066,8 +16066,8 @@
       ],
       "sourceRoot": "",
       "sources": [
-        "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/features/sessions/components/list/list.component.html",
-        "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/features/sessions/components/list/list.component.ts"
+        "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/features/sessions/components/list/list.component.html",
+        "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/features/sessions/components/list/list.component.ts"
       ],
       "sourcesContent": [
         "<div class=\"list\">\n  <mat-card>\n    <mat-card-header fxLayout=\"row\" fxLayoutAlign=\"space-between center\">\n      <mat-card-title class=\"m0\">Rentals available</mat-card-title>\n      <button *ngIf=\"user!.admin\" mat-raised-button color=\"primary\" routerLink=\"create\">\n        <mat-icon>add</mat-icon>\n        <span class=\"ml1\">Create</span>\n      </button>\n    </mat-card-header>\n    <div class=\"items mt2\" fxLayout=\"row wrap\" fxLayout.lt-md=\"column\">\n      <mat-card class=\"item\" *ngFor=\"let session of (sessions$ | async)\" fxFlex>\n        <mat-card-header>\n          <mat-card-title>{{ session.name }}</mat-card-title>\n          <mat-card-subtitle>\n            Session on {{ session.date | date: 'longDate'}}\n          </mat-card-subtitle>\n        </mat-card-header>\n        <div mat-card-image fxLayoutAlign=\"center center\">\n          <img class=\"picture\" src=\"assets/sessions.png\" alt=\"Yoga session\">\n        </div>\n        <mat-card-content>\n          <p>\n            {{ session.description }}\n          </p>\n        </mat-card-content>\n        <mat-card-actions>\n          <button mat-raised-button color=\"primary\" [routerLink]=\"['detail',session.id]\">\n            <mat-icon>search</mat-icon>\n            <span class=\"ml1\">Detail</span>\n          </button>\n          <button *ngIf=\"user!.admin\" mat-raised-button color=\"primary\"\n                  [routerLink]=\"['update',session.id]\">\n            <mat-icon>edit</mat-icon>\n            <span class=\"ml1\">Edit</span>\n          </button>\n        </mat-card-actions>\n      </mat-card>\n    </div>\n  </mat-card>\n</div>\n",
@@ -16075,10 +16075,10 @@
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "a7fcd0ae4bdddb930fa5a3c9d9827e342be87a85"
+    "hash": "3c5dfd7e2885b4ce4b12039cca7a108a79c9d4bd"
   },
-  "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/features/sessions/sessions-routing.module.ts": {
-    "path": "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/features/sessions/sessions-routing.module.ts",
+  "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/features/sessions/sessions-routing.module.ts": {
+    "path": "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/features/sessions/sessions-routing.module.ts",
     "statementMap": {
       "0": {
         "start": {
@@ -16240,22 +16240,22 @@
       }
     },
     "s": {
-      "0": 4,
-      "1": 4,
-      "2": 4,
-      "3": 4,
-      "4": 4,
-      "5": 4,
-      "6": 4
+      "0": 8,
+      "1": 8,
+      "2": 8,
+      "3": 8,
+      "4": 8,
+      "5": 8,
+      "6": 8
     },
     "f": {
-      "0": 4,
-      "1": 4
+      "0": 8,
+      "1": 8
     },
     "b": {
       "0": [
-        4,
-        4
+        8,
+        8
       ]
     },
     "inputSourceMap": {
@@ -16275,17 +16275,17 @@
       ],
       "sourceRoot": "",
       "sources": [
-        "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/features/sessions/sessions-routing.module.ts"
+        "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/features/sessions/sessions-routing.module.ts"
       ],
       "sourcesContent": [
         "import { NgModule } from '@angular/core';\nimport { RouterModule, Routes } from '@angular/router';\nimport { DetailComponent } from './components/detail/detail.component';\nimport { FormComponent } from './components/form/form.component';\nimport { ListComponent } from './components/list/list.component';\n\nconst routes: Routes = [\n  { path: '', title: 'Sessions', component: ListComponent },\n  { path: 'detail/:id', title: 'Sessions - detail', component: DetailComponent },\n  { path: 'create', title: 'Sessions - create', component: FormComponent },\n  { path: 'update/:id', title: 'Sessions - update', component: FormComponent }\n];\n\n@NgModule({\n  imports: [RouterModule.forChild(routes)],\n  exports: [RouterModule]\n})\nexport class SessionsRoutingModule {\n}\n"
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "bd9a89a645706fba5a38df6b4a304a74571a99f7"
+    "hash": "d0d4817a27d853deab4e3ea232d4c212028d40c6"
   },
-  "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/features/sessions/sessions.module.ts": {
-    "path": "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/features/sessions/sessions.module.ts",
+  "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/features/sessions/sessions.module.ts": {
+    "path": "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/features/sessions/sessions.module.ts",
     "statementMap": {
       "0": {
         "start": {
@@ -16457,23 +16457,23 @@
       }
     },
     "s": {
-      "0": 4,
-      "1": 4,
-      "2": 4,
-      "3": 4,
-      "4": 4,
-      "5": 4,
-      "6": 4,
-      "7": 4
+      "0": 8,
+      "1": 8,
+      "2": 8,
+      "3": 8,
+      "4": 8,
+      "5": 8,
+      "6": 8,
+      "7": 8
     },
     "f": {
-      "0": 4,
-      "1": 4
+      "0": 8,
+      "1": 8
     },
     "b": {
       "0": [
-        4,
-        4
+        8,
+        8
       ]
     },
     "inputSourceMap": {
@@ -16498,13 +16498,13 @@
       ],
       "sourceRoot": "",
       "sources": [
-        "/Users/ayman/Developer/Testez-une-application-full-stack/front/src/app/features/sessions/sessions.module.ts"
+        "/Users/ayman/Developer/Openclassrooms Projects/p-5/Testez-une-application-full-stack/front/src/app/features/sessions/sessions.module.ts"
       ],
       "sourcesContent": [
         "import { NgModule } from '@angular/core';\nimport { CommonModule, registerLocaleData } from '@angular/common';\nimport { FlexLayoutModule } from '@angular/flex-layout';\nimport { ReactiveFormsModule } from '@angular/forms';\nimport { MatButtonModule } from '@angular/material/button';\nimport { MatCardModule } from '@angular/material/card';\nimport { MatFormFieldModule } from '@angular/material/form-field';\nimport { MatIconModule } from '@angular/material/icon';\nimport { MatInputModule } from '@angular/material/input';\nimport { MatSelectModule } from '@angular/material/select';\nimport { MatSnackBarModule } from '@angular/material/snack-bar';\nimport { ListComponent } from './components/list/list.component';\nimport { FormComponent } from './components/form/form.component';\nimport { DetailComponent } from './components/detail/detail.component';\nimport { SessionsRoutingModule } from './sessions-routing.module';\nimport localeFr from '@angular/common/locales/fr';\nregisterLocaleData(localeFr);\n\nconst materialModules = [\n  MatButtonModule,\n  MatCardModule,\n  MatFormFieldModule,\n  MatIconModule,\n  MatInputModule,\n  MatSnackBarModule,\n  MatSelectModule\n];\n\n@NgModule({\n  declarations: [\n    ListComponent,\n    FormComponent,\n    DetailComponent\n  ],\n  imports: [\n    CommonModule,\n    FlexLayoutModule,\n    ReactiveFormsModule,\n    SessionsRoutingModule,\n    ...materialModules\n  ]\n})\nexport class SessionsModule { }\n"
       ]
     },
     "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
-    "hash": "136cab11a9ba0ba5ebf69819d1d1836d71350f89"
+    "hash": "7e7e7dc5a87910f5b445d832d1f91a1987145b31"
   }
 }

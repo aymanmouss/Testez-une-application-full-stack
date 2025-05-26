@@ -23,8 +23,7 @@ export class MeComponent implements OnInit {
   public ngOnInit(): void {
     this.userService
       .getById(this.sessionService.sessionInformation!.id.toString())
-      .subscribe((user: User) => (this.user = user));
-    console.log(this.user);
+      .subscribe((user: User) => (console.log(user), (this.user = user)));
   }
 
   public back(): void {
