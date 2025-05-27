@@ -46,7 +46,6 @@ class UserControllerTest {
     void setUp() {
         user = createUser();
         userDto = createUserDto();
-        setupSecurityContext();
     }
 
     @Test
@@ -82,6 +81,7 @@ class UserControllerTest {
 
     @Test
     void delete_ValidIdAndAuthorizedUser_ReturnsOk() {
+        setupSecurityContext();
         when(userService.findById(1L)).thenReturn(user);
         when(authentication.getPrincipal()).thenReturn(userDetails);
         when(userDetails.getUsername()).thenReturn("test@test.com");
@@ -95,6 +95,7 @@ class UserControllerTest {
 
     @Test
     void delete_ValidIdButUnauthorizedUser_ReturnsUnauthorized() {
+        setupSecurityContext();
         when(userService.findById(1L)).thenReturn(user);
         when(authentication.getPrincipal()).thenReturn(userDetails);
         when(userDetails.getUsername()).thenReturn("another@test.com");

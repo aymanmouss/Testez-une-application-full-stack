@@ -3,8 +3,6 @@ package com.openclassrooms.starterjwt.security.jwt;
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 
-import com.openclassrooms.starterjwt.security.jwt.AuthTokenFilter;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 class AuthTokenFilterTest {
@@ -12,29 +10,36 @@ class AuthTokenFilterTest {
     private final AuthTokenFilter authTokenFilter = new AuthTokenFilter();
 
     @Test
-    void parseJwtValidToken() {
-        // GIVEN
-        MockHttpServletRequest request = new MockHttpServletRequest();
-        String validToken = "validToken";
-        request.addHeader("Authorization", "Bearer " + validToken);
+    void parseJwt_validToken_shouldReturnToken() {
+        MockHttpServletRequest request = createRequestWithToken("validToken");
 
-        // WHEN
         String result = authTokenFilter.parseJwt(request);
 
-        // THEN
-        assertThat(result).isEqualTo(validToken);
+        assertThat(result).isEqualTo("validToken");
     }
 
     @Test
-    void parseJwtNoTokenInHeader() {
-        // GIVEN
+    void parseJwt_noToken_shouldReturnNull() {
         MockHttpServletRequest request = new MockHttpServletRequest();
 
-        // WHEN
         String result = authTokenFilter.parseJwt(request);
 
-        // THEN
         assertThat(result).isNull();
     }
 
+    @Test
+    void parseJwt_invalidHeader_shouldReturnNull() {
+        MockHttpServletRequest request = new MockHttpServletRequest();
+        request.addHeader("Authorization", "InvalidHeader token");
+
+        String result = authTokenFilter.parseJwt(request);
+
+        assertThat(result).isNull();
+    }
+
+    private MockHttpServletRequest createRequestWithToken(String token) {
+        MockHttpServletRequest request = new MockHttpServletRequest();
+        request.addHeader("Authorization", "Bearer " + token);
+        return request;
+    }
 }

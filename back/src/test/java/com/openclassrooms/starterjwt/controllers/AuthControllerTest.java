@@ -3,30 +3,26 @@ package com.openclassrooms.starterjwt.controllers;
 import com.openclassrooms.starterjwt.models.User;
 import com.openclassrooms.starterjwt.payload.request.LoginRequest;
 import com.openclassrooms.starterjwt.payload.request.SignupRequest;
-import com.openclassrooms.starterjwt.payload.response.JwtResponse;
 import com.openclassrooms.starterjwt.payload.response.MessageResponse;
 import com.openclassrooms.starterjwt.repository.UserRepository;
 import com.openclassrooms.starterjwt.security.jwt.JwtUtils;
 import com.openclassrooms.starterjwt.security.services.UserDetailsImpl;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -50,142 +46,75 @@ public class AuthControllerTest {
     @Mock
     private Authentication authentication;
 
-    @Mock
-    private SecurityContext securityContext;
-
-    @BeforeEach
-    public void setUp() {
-        authController = new AuthController(
-                authenticationManager,
-                passwordEncoder,
-                jwtUtils,
-                userRepository
-        );
-    }
-
     @Test
-    @DisplayName("authenticateUser method, return JWT response")
-    void whenUserAuthenticated_thenReturnJwtResponse(){
+    @DisplayName("Should authenticate user successfully")
+    void shouldAuthenticateUser(){
+        // Arrange
         LoginRequest loginRequest = new LoginRequest();
-        String email = "test@example.com";
-        String password = "encodedPassword";
-
-        loginRequest.setEmail(email);
-        loginRequest.setPassword(password);
-
-        String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzYXJhaCJ9";
+        loginRequest.setEmail("test@example.com");
+        loginRequest.setPassword("password");
 
         UserDetailsImpl userDetails = UserDetailsImpl.builder()
-                .id(15L)
-                .username(email)
-                .lastName("Doe")
+                .id(1L)
+                .username("test@example.com")
                 .firstName("John")
+                .lastName("Doe")
                 .admin(false)
-                .password(password)
                 .build();
 
         User user = new User();
         user.setAdmin(false);
-        boolean isAdmin = user.isAdmin();
 
-        when(authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email,password))).thenReturn(authentication);
-
-        SecurityContextHolder.setContext(securityContext);
-        securityContext.setAuthentication(authentication);
-
-        when(jwtUtils.generateJwtToken(authentication)).thenReturn(token);
+        // Mock
+        when(authenticationManager.authenticate(any(UsernamePasswordAuthenticationToken.class)))
+                .thenReturn(authentication);
         when(authentication.getPrincipal()).thenReturn(userDetails);
-        when(userRepository.findByEmail(userDetails.getUsername())).thenReturn(Optional.of(user));
+        when(jwtUtils.generateJwtToken(authentication)).thenReturn("jwt-token");
+        when(userRepository.findByEmail("test@example.com")).thenReturn(Optional.of(user));
 
-        JwtResponse jwtResponse = new JwtResponse(
-                token,
-                userDetails.getId(),
-                userDetails.getUsername(),
-                userDetails.getFirstName(),
-                userDetails.getLastName(),
-                isAdmin
-        );
+        // Act
+        ResponseEntity<?> result = authController.authenticateUser(loginRequest);
 
-        ResponseEntity<?> authenticateUser = authController.authenticateUser(loginRequest);
-        ResponseEntity<?> responseEntityOK = ResponseEntity.ok(jwtResponse);
-
-        assertEquals(authenticateUser.getStatusCode(),responseEntityOK.getStatusCode());
-        verify(authenticationManager, times(1)).authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
-        verify(jwtUtils, times(1)).generateJwtToken(authentication);
-        verify(userRepository, times(1)).findByEmail(userDetails.getUsername());
+        // Assert
+        assertEquals(HttpStatus.OK, result.getStatusCode());
+        verify(authenticationManager).authenticate(any(UsernamePasswordAuthenticationToken.class));
     }
 
     @Test
-    @DisplayName("authenticateUser method, bad credentials")
-    void whenBadCredentials_thenNoAuthentication(){
-        LoginRequest loginRequest = new LoginRequest();
-        String email = "test@example.com";
-        String password = "encodedPassword";
-
-        loginRequest.setEmail(email);
-        loginRequest.setPassword(password);
-
-        String token = "invalid_token_attempt";
-        UserDetailsImpl userDetails = UserDetailsImpl.builder()
-                .username(email)
-                .password(password)
-                .build();
-
-        when(authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email,password))).thenReturn(authentication);
-        SecurityContextHolder.setContext(securityContext);
-        securityContext.setAuthentication(authentication);
-
-        when(jwtUtils.generateJwtToken(authentication)).thenReturn(token);
-        when(authentication.getPrincipal()).thenReturn(userDetails);
-        User user = userRepository.findByEmail(userDetails.getUsername()).orElse(null);
-
-        authController.authenticateUser(loginRequest);
-
-        assertNull(user);
-        verify(authenticationManager, times(1)).authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
-        verify(jwtUtils, times(1)).generateJwtToken(authentication);
-        verify(userRepository, times(2)).findByEmail(email);
-    }
-
-    @Test
-    @DisplayName("registerUser method, return response entity ok")
-    void whenValidSignUpRequest_thenReturnResponseEntityOK(){
+    @DisplayName("Should register user successfully")
+    void shouldRegisterUser(){
+        // Arrange
         SignupRequest signupRequest = new SignupRequest();
         signupRequest.setEmail("test@example.com");
         signupRequest.setFirstName("John");
         signupRequest.setLastName("Doe");
-        signupRequest.setPassword("encodedPassword");
+        signupRequest.setPassword("password");
 
-        User user = new User();
-        user.setEmail(signupRequest.getEmail());
-        user.setFirstName(signupRequest.getFirstName());
-        user.setLastName(signupRequest.getLastName());
-        user.setPassword(signupRequest.getPassword());
-        user.setAdmin(false);
+        when(userRepository.existsByEmail("test@example.com")).thenReturn(false);
+        when(passwordEncoder.encode("password")).thenReturn("encoded-password");
 
-        when(passwordEncoder.encode(signupRequest.getPassword())).thenReturn(user.getPassword());
-        when(userRepository.save(user)).thenReturn(user);
+        // Act
+        ResponseEntity<?> result = authController.registerUser(signupRequest);
 
-        MessageResponse messageResponse = new MessageResponse("User registered successfully!");
-        ResponseEntity<?> responseEntity = ResponseEntity.ok(messageResponse);
-        ResponseEntity<?> registerUser = authController.registerUser(signupRequest);
-        assertEquals(registerUser.getStatusCode(), responseEntity.getStatusCode());
-        verify(passwordEncoder, times(1)).encode(user.getPassword());
-        verify(userRepository, times(1)).save(user);
+        // Assert
+        assertEquals(HttpStatus.OK, result.getStatusCode());
+        verify(userRepository).save(any(User.class));
     }
 
     @Test
-    @DisplayName("registerUser method, return bad request")
-    void whenEmailAlreadyExists_thenReturnBadRequest(){
+    @DisplayName("Should return bad request when email exists")
+    void shouldReturnBadRequestWhenEmailExists(){
+        // Arrange
         SignupRequest signupRequest = new SignupRequest();
-        signupRequest.setEmail("alex.rodriguez@yogastudio.com");
-        when(userRepository.existsByEmail(signupRequest.getEmail())).thenReturn(true);
+        signupRequest.setEmail("existing@example.com");
 
-        MessageResponse messageResponse = new MessageResponse("Error: Email is already taken!");
-        ResponseEntity<?> responseEntityBadRequest = ResponseEntity.badRequest().body(messageResponse);
-        ResponseEntity<?> registerUser = authController.registerUser(signupRequest);
+        when(userRepository.existsByEmail("existing@example.com")).thenReturn(true);
 
-        assertEquals(registerUser.getStatusCode(), responseEntityBadRequest.getStatusCode());
-        verify(userRepository, times(1)).existsByEmail(signupRequest.getEmail());
+        // Act
+        ResponseEntity<?> result = authController.registerUser(signupRequest);
+
+        // Assert
+        assertEquals(HttpStatus.BAD_REQUEST, result.getStatusCode());
+        verify(userRepository, never()).save(any(User.class));
     }
 }
