@@ -40,23 +40,17 @@ describe('User session spec', () => {
   });
 
   it('Participate to a session', () => {
-    const sessionUsers: number[] = [];
-    cy.intercept(
-      {
-        method: 'GET',
-        url: '/api/session/1',
-      },
-      {
-        id: 1,
-        name: 'Yoga session',
-        date: new Date(),
-        teacher_id: 2,
-        description: 'Join us for a yoga session',
-        users: sessionUsers,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      }
-    ).as('session');
+    cy.intercept('GET', '/api/session/1', {
+      id: 1,
+      name: 'Yoga session',
+      date: new Date(),
+      teacher_id: 2,
+      description: 'Join us for a yoga session',
+      users: [],
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    }).as('session');
+
     cy.intercept('GET', '/api/teacher/2', {
       body: {
         id: 1,
@@ -66,34 +60,39 @@ describe('User session spec', () => {
         updatedAt: new Date(),
       },
     });
+
     cy.intercept('POST', '/api/session/1/participate/1', {
-      status: 200,
+      statusCode: 200,
     });
-    sessionUsers.push(1);
+
+    cy.intercept('GET', '/api/session/1', {
+      id: 1,
+      name: 'Yoga session',
+      date: new Date(),
+      teacher_id: 2,
+      description: 'Join us for a yoga session',
+      users: [1],
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    });
+
     cy.get('button[color="primary"]').click();
     cy.get('button[color="warn"]').should('exist');
     cy.get('span.ml1').should('contain', '1 attendees');
   });
 
   it('Withdraw participation from a session', () => {
-    let sessionUsers: number[] = [];
+    cy.intercept('GET', '/api/session/1', {
+      id: 1,
+      name: 'Yoga session',
+      date: new Date(),
+      teacher_id: 2,
+      description: 'Join us for a yoga session',
+      users: [1],
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    }).as('session');
 
-    cy.intercept(
-      {
-        method: 'GET',
-        url: '/api/session/1',
-      },
-      {
-        id: 1,
-        name: 'Yoga session',
-        date: new Date(),
-        teacher_id: 2,
-        description: 'Join us for a yoga session',
-        users: sessionUsers,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      }
-    ).as('session');
     cy.intercept('GET', '/api/teacher/2', {
       body: {
         id: 1,
@@ -103,12 +102,23 @@ describe('User session spec', () => {
         updatedAt: new Date(),
       },
     });
-    cy.intercept('DELETE', '/api/session/1/participate/1', {
-      status: 200,
-    });
-    cy.get('button span').contains('Do not participate').click();
-    sessionUsers = [];
 
+    cy.intercept('DELETE', '/api/session/1/participate/1', {
+      statusCode: 200,
+    });
+
+    cy.intercept('GET', '/api/session/1', {
+      id: 1,
+      name: 'Yoga session',
+      date: new Date(),
+      teacher_id: 2,
+      description: 'Join us for a yoga session',
+      users: [],
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    });
+
+    cy.get('button span').contains('Do not participate').click();
     cy.get('button[color="primary"]').should('exist');
     cy.get('span.ml1').should('contain', '0 attendees');
   });

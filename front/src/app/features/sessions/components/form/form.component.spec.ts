@@ -15,6 +15,7 @@ import { SessionApiService } from '../../services/session-api.service';
 
 import { FormComponent } from './form.component';
 import { Router } from '@angular/router';
+import { SessionInformation } from 'src/app/interfaces/sessionInformation.interface';
 
 describe('FormComponent', () => {
   let component: FormComponent;
@@ -23,8 +24,14 @@ describe('FormComponent', () => {
 
   const mockSessionService = {
     sessionInformation: {
+      token: 'fake-jwt-token',
+      type: 'Bearer',
+      id: 1,
+      username: 'testUser',
+      firstName: 'Test',
+      lastName: 'User',
       admin: true,
-    },
+    } as SessionInformation,
   };
 
   beforeEach(async () => {

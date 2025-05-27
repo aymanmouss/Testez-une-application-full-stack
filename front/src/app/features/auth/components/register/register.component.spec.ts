@@ -103,7 +103,7 @@ describe('RegisterComponent', () => {
         component.form.patchValue(registerRequest);
       });
 
-      it('should set onError to true on login failure', () => {
+      it('should set onError to true on registration failure', () => {
         authServiceMock.register.mockReturnValue(
           throwError(() => new Error('Login failed'))
         );

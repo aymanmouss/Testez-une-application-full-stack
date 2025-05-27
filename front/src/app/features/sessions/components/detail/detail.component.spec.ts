@@ -12,6 +12,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { of } from 'rxjs';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { Session } from '../../interfaces/session.interface';
+import { Teacher } from 'src/app/interfaces/teacher.interface';
+import { SessionInformation } from 'src/app/interfaces/sessionInformation.interface';
 
 describe('DetailComponent', () => {
   let component: DetailComponent;
@@ -24,9 +27,14 @@ describe('DetailComponent', () => {
   let activatedRouteMock: jest.Mocked<ActivatedRoute>;
   const mockSessionService = {
     sessionInformation: {
-      admin: true,
+      token: 'fake-jwt-token',
+      type: 'Bearer',
       id: 1,
-    },
+      username: 'testUser',
+      firstName: 'Test',
+      lastName: 'User',
+      admin: true,
+    } as SessionInformation,
   };
   const mockSession = {
     id: 1,
@@ -37,11 +45,15 @@ describe('DetailComponent', () => {
     users: [1, 2, 4],
     createdAt: new Date(),
     updatedAt: new Date(),
-  };
+  } as Session;
+
   const mockTeacher = {
     id: 1,
-    name: 'Test Teacher',
-  };
+    lastName: 'Teacher',
+    firstName: 'Test',
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  } as Teacher;
 
   beforeEach(async () => {
     mockSessionApiService = {
@@ -100,6 +112,7 @@ describe('DetailComponent', () => {
     expect(mockSessionApiService.detail).toBeCalledWith('123');
     expect(mockTeacherService.detail).toBeCalledWith('1');
   });
+
   it('should call delete and show snackbar message', () => {
     component.delete();
     expect(mockSessionApiService.delete).toBeCalledWith('123');
@@ -108,14 +121,17 @@ describe('DetailComponent', () => {
     });
     expect(mockRouter.navigate).toBeCalledWith(['sessions']);
   });
+
   it('should call participate and fetch session', () => {
     component.participate();
     expect(mockSessionApiService.participate).toBeCalledWith('123', '1');
   });
+
   it('should call unParticipate and fetch session', () => {
     component.unParticipate();
     expect(mockSessionApiService.unParticipate).toBeCalledWith('123', '1');
   });
+
   it('should handle back navigation', () => {
     const mockBack = jest.fn();
     window.history.back = mockBack;

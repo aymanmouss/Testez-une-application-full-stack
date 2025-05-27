@@ -8,12 +8,19 @@ import { Router } from '@angular/router';
 import { RegisterComponent } from './register.component';
 import { describe, expect, it, beforeEach } from '@jest/globals';
 import { AuthService } from '../../services/auth.service';
+import { RegisterRequest } from '../../interfaces/registerRequest.interface';
 
 describe('RegisterComponent Integration', () => {
   let component: RegisterComponent;
   let fixture: ComponentFixture<RegisterComponent>;
   let httpMock: HttpTestingController;
   let router: Router;
+  const registerRequestMock = {
+    email: 'test@test.com',
+    firstName: 'John',
+    lastName: 'Doe',
+    password: 'password123',
+  } as RegisterRequest;
 
   beforeEach(async () => {
     const routerSpy = { navigate: jest.fn() };
@@ -31,23 +38,13 @@ describe('RegisterComponent Integration', () => {
   });
 
   it('should register successfully via HTTP', () => {
-    component.form.patchValue({
-      email: 'test@test.com',
-      firstName: 'John',
-      lastName: 'Doe',
-      password: 'password123',
-    });
+    component.form.patchValue(registerRequestMock);
 
     component.submit();
 
     const req = httpMock.expectOne('api/auth/register');
     expect(req.request.method).toEqual('POST');
-    expect(req.request.body).toEqual({
-      email: 'test@test.com',
-      firstName: 'John',
-      lastName: 'Doe',
-      password: 'password123',
-    });
+    expect(req.request.body).toEqual(registerRequestMock);
 
     req.flush({});
 
@@ -55,12 +52,7 @@ describe('RegisterComponent Integration', () => {
   });
 
   it('should handle registration error via HTTP', () => {
-    component.form.patchValue({
-      email: 'test@test.com',
-      firstName: 'John',
-      lastName: 'Doe',
-      password: 'password123',
-    });
+    component.form.patchValue(registerRequestMock);
 
     component.submit();
 

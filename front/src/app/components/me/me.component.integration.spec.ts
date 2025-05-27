@@ -54,10 +54,10 @@ describe('MeComponent Integration', () => {
   });
 
   it('should delete user via HTTP', () => {
-    fixture.detectChanges();
     component.delete();
+
     const req = httpMock.expectOne('api/user/1');
     req.flush({});
-    expect(component.user).toEqual({});
+    expect(req.request.method).toEqual('DELETE');
   });
 });

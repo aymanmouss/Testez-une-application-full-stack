@@ -53,7 +53,15 @@ describe('LoginComponent Integration', () => {
       password: 'password123',
     });
 
-    const mockResponse = { token: 'abc123', id: 1, admin: false };
+    const mockResponse = {
+      token: 'fake-jwt-token',
+      type: 'Bearer',
+      id: 1,
+      username: 'testUser',
+      firstName: 'Test',
+      lastName: 'User',
+      admin: false,
+    };
     req.flush(mockResponse);
 
     expect(sessionService.logIn).toHaveBeenCalledWith(mockResponse);
