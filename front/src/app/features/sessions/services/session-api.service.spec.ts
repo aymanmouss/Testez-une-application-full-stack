@@ -56,8 +56,8 @@ describe('SessionApiService', () => {
     });
 
     const req = httpMock.expectOne(`${apiUrl}/${id}`);
-
     expect(req.request.method).toBe('GET');
+
     req.flush(mockSession);
   });
 

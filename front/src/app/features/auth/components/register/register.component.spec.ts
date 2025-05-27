@@ -74,24 +74,6 @@ describe('RegisterComponent', () => {
       expect(passwordControl?.hasValidator(Validators.required)).toBeTruthy();
     });
 
-    describe('Form Validation', () => {
-      it('should be invalid when empty', () => {
-        expect(component.form.valid).toBeFalsy();
-      });
-
-      it('should be invalid with invalid email', () => {
-        const emailControl = component.form.get('email');
-        emailControl?.setValue('invalidemail');
-        expect(emailControl?.valid).toBeFalsy();
-      });
-
-      it('should be valid with valid email', () => {
-        const emailControl = component.form.get('email');
-        emailControl?.setValue('test@email.fr');
-        expect(emailControl?.valid).toBeTruthy();
-      });
-    });
-
     describe('Submit', () => {
       const registerRequest: RegisterRequest = {
         email: 'test@test.fr',

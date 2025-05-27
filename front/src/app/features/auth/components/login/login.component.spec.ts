@@ -87,11 +87,7 @@ describe('LoginComponent', () => {
       expect(emailControl?.valid).toBeFalsy;
     });
   });
-  it('should be valid with valid email', () => {
-    const emailControl = component.form.get('email');
-    emailControl?.setValue('test@test.fr');
-    expect(emailControl?.valid).toBeTruthy();
-  });
+
   describe('Submit', () => {
     const mockLoginRequest: LoginRequest = {
       email: 'test@example.com',

@@ -1,72 +1,72 @@
-# Yoga
+# Frontend - Yoga Application
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.0.
+## 🛠️ Technical Stack
 
-## Start the project
+- **Framework**: Angular
+- **Testing**: Jest & Cypress
+- **Language**: TypeScript
 
-Git clone:
+## 📋 Prerequisites
 
-> git clone https://github.com/OpenClassrooms-Student-Center/P5-Full-Stack-testing
+- Node.js (version 14 or higher)
+- npm (version 6 or higher)
 
-Go inside folder:
+## 🚀 Installation & Setup
 
-> cd yoga
+### 1. Clone the project
 
-Install dependencies:
+```bash
+git clone https://github.com/aymanmouss/Testez-une-application-full-stack
+cd front
+```
 
-> npm install
+### 2. Install dependencies
 
-Launch Front-end:
+```bash
+npm install
+```
 
-> npm run start;
+### 3. Start the development server
 
+```bash
+npm run start
+```
 
-## Ressources
+The application will be available at `http://localhost:4200`
 
-### Mockoon env 
+## 🧪 Testing
 
-### Postman collection
+### Unit Tests (Jest)
 
-For Postman import the collection
+Run unit tests:
 
-> ressources/postman/yoga.postman_collection.json 
+```bash
+npm run test
+```
 
-by following the documentation: 
+Generate coverage report:
 
-https://learning.postman.com/docs/getting-started/importing-and-exporting-data/#importing-data-into-postman
+```bash
+npm run test:coverage
+```
 
+### End-to-End Tests (Cypress)
 
-### MySQL
+Run e2e tests:
 
-SQL script for creating the schema is available `ressources/sql/script.sql`
+```bash
+npm run e2e
+```
 
-By default the admin account is:
-- login: yoga@studio.com
-- password: test!1234
+Generate e2e coverage report:
 
+```bash
+npm run e2e:coverage
+```
 
-### Test
+## 📊 Coverage Reports
 
-#### E2E
+After running tests with coverage, reports will be generated in:
 
-Launching e2e test:
-
-> npm run e2e
-
-Generate coverage report (you should launch e2e test before):
-
-> npm run e2e:coverage
-
-Report is available here:
-
-> front/coverage/lcov-report/index.html
-
-#### Unitary test
-
-Launching test:
-
-> npm run test
-
-for following change:
-
-> npm run test:watch
+- Unit tests: `coverage/jest/lcov-report/` directory
+- E2E tests: `coverage/lcov-report/` directory

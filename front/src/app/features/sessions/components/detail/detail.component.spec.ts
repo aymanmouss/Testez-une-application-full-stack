@@ -108,7 +108,6 @@ describe('DetailComponent', () => {
   });
 
   it('should fetch session on init', () => {
-    fixture.detectChanges();
     expect(mockSessionApiService.detail).toBeCalledWith('123');
     expect(mockTeacherService.detail).toBeCalledWith('1');
   });

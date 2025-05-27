@@ -24,7 +24,6 @@ describe('User details /me ', () => {
     cy.get('mat-card').within(() => {
       cy.get('mat-card-title h1').should('contain', 'User information');
 
-      // Check user information in mat-card-content
       cy.get('mat-card-content').within(() => {
         cy.get('p').should('contain', 'Name: John DOE');
         cy.get('p').should('contain', 'Email: yoga@studio.com');
