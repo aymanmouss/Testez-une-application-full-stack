@@ -71,7 +71,6 @@ class SessionControllerIntegrationTest {
         // Act & Assert
         mockMvc.perform(get("/api/session/1")
                         .contentType(MediaType.APPLICATION_JSON))
-                .andDo(print())
                 .andExpect(status().isOk());
     }
 
@@ -140,7 +139,6 @@ class SessionControllerIntegrationTest {
         // Act & Assert
         mockMvc.perform(get("/api/session")
                         .contentType(MediaType.APPLICATION_JSON))
-                .andDo(print())
                 .andExpect(status().isOk());
     }
 
@@ -180,7 +178,6 @@ class SessionControllerIntegrationTest {
         mockMvc.perform(post("/api/session")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(sessionDto)))
-                .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(1))
                 .andExpect(jsonPath("$.name").value("Yoga Session"));

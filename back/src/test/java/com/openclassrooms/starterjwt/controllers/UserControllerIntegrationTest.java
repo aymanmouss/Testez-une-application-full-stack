@@ -117,7 +117,7 @@ class UserControllerIntegrationTest {
         LocalDateTime now = LocalDateTime.now();
         User user = User.builder()
                 .id(1L)
-                .email("test@test.com") // Different from the authenticated user
+                .email("test@test.com")
                 .lastName("Test")
                 .firstName("User")
                 .password("password")
